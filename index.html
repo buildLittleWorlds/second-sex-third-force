@@ -4,69 +4,1197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Second Sex and the Third Force</title>
+    <meta name="description" content="An essay by Dr. Elizabeth M. Drews exploring the psychological and social development of women and their potential contributions to society.">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charter:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            /* Light theme colors */
+            --bg-color: #fefcf7;
+            --text-color: #2a2a2a;
+            --text-light: #666;
+            --accent-color: #3498db;
+            --accent-hover: #2980b9;
+            --border-color: #e8e8e8;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --selection-bg: #3498db20;
+            
+            /* Typography */
+            --font-serif: Charter, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+            
+            /* Spacing */
+            --content-width: 680px;
+            --reading-width: 65ch;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+        }
+
+        /* Dark theme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e8e8e8;
+                --text-light: #a8a8a8;
+                --accent-color: #64b5f6;
+                --accent-hover: #42a5f5;
+                --border-color: #333;
+                --card-bg: #2a2a2a;
+                --shadow: rgba(0, 0, 0, 0.3);
+                --selection-bg: #64b5f620;
+            }
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #e8e8e8;
+            --text-light: #a8a8a8;
+            --accent-color: #64b5f6;
+            --accent-hover: #42a5f5;
+            --border-color: #333;
+            --card-bg: #2a2a2a;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --selection-bg: #64b5f620;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #fefcf7;
+            --text-color: #2a2a2a;
+            --text-light: #666;
+            --accent-color: #3498db;
+            --accent-hover: #2980b9;
+            --border-color: #e8e8e8;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --selection-bg: #3498db20;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background-color: var(--selection-bg);
+            color: var(--text-color);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 18px;
+        }
+
         body {
-            font-family: Georgia, 'Times New Roman', serif;
-            line-height: 1.6;
-            max-width: 800px;
+            font-family: var(--font-serif);
+            line-height: 1.75;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Header controls */
+        .header-controls {
+            position: fixed;
+            top: var(--space-sm);
+            right: var(--space-sm);
+            z-index: 100;
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .control-btn {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px var(--shadow);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px var(--shadow);
+            border-color: var(--accent-color);
+        }
+
+        /* Main content */
+        .container {
+            max-width: var(--content-width);
             margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #fdfdfd;
-            color: #333;
+            padding: var(--space-xl) var(--space-lg);
         }
+
+        /* Typography */
         h1 {
-            color: #2c3e50;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            line-height: 1.2;
+            color: var(--text-color);
             text-align: center;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 15px;
-            margin-bottom: 10px;
-            font-size: 2.2em;
+            margin: 0 0 var(--space-sm) 0;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            position: relative;
         }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+            margin: var(--space-md) auto var(--space-lg);
+            border-radius: 2px;
+        }
+
         .author {
             text-align: center;
             font-style: italic;
-            margin-bottom: 40px;
-            color: #666;
-            font-size: 1.1em;
+            margin-bottom: var(--space-xl);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-family: var(--font-sans);
         }
+
+        .reading-info {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .reading-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Note styling */
+        .note {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+            text-align: center;
+            margin: var(--space-xl) 0;
+            padding: var(--space-lg);
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 8px var(--shadow);
+            position: relative;
+        }
+
+        .note::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent-color);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: var(--font-serif);
+        }
+
+        /* Paragraph styling */
+        .content {
+            max-width: var(--reading-width);
+            margin: 0 auto;
+        }
+
         p {
-            margin-bottom: 1.2em;
+            margin-bottom: var(--space-lg);
             text-align: justify;
-            text-indent: 1.5em;
+            text-indent: 2rem;
+            hyphens: auto;
+            word-break: break-word;
         }
+
         p:first-of-type {
             text-indent: 0;
         }
-        .note {
-            font-size: 0.9em;
-            color: #666;
-            font-style: italic;
-            text-align: center;
-            margin: 30px 0;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-left: 4px solid #3498db;
+
+        p:first-of-type::first-letter {
+            float: left;
+            font-size: 4rem;
+            line-height: 3rem;
+            margin: 0.3rem 0.5rem 0.1rem 0;
+            color: var(--accent-color);
+            font-weight: 700;
         }
-        @media (max-width: 600px) {
-            body {
-                padding: 20px 15px;
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            box-shadow: 0 4px 16px var(--shadow);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Table of contents */
+        .toc {
+            position: fixed;
+            left: -300px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            box-shadow: 0 8px 32px var(--shadow);
+            transition: left 0.3s ease;
+            z-index: 50;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .toc.visible {
+            left: var(--space-lg);
+        }
+
+        .toc h3 {
+            margin: 0 0 var(--space-sm) 0;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Focus mode */
+        body.focus-mode .header-controls,
+        body.focus-mode .toc {
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+        }
+
+        body.focus-mode .header-controls:hover,
+        body.focus-mode .toc:hover {
+            opacity: 1;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            html {
+                font-size: 16px;
             }
+
+            .container {
+                padding: var(--space-lg) var(--space-md);
+            }
+
+            p {
+                text-indent: 1.5rem;
+                text-align: left;
+            }
+
+            .header-controls {
+                top: var(--space-xs);
+                right: var(--space-xs);
+            }
+
+            .toc {
+                display: none;
+            }
+
+            .back-to-top {
+                bottom: var(--space-md);
+                right: var(--space-md);
+            }
+
+            p:first-of-type::first-letter {
+                font-size: 3rem;
+                line-height: 2.5rem;
+            }
+
+            .reading-info {
+                flex-direction: column;
+                gap: var(--space-xs);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: var(--space-md) var(--space-sm);
+            }
+
+            .control-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 12px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .progress-bar,
+            .header-controls,
+            .back-to-top,
+            .toc {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 12pt;
+                line-height: 1.5;
+            }
+
+            .container {
+                max-width: none;
+                padding: 0;
+            }
+
+            p {
+                text-align: left;
+                text-indent: 1em;
+                margin-bottom: 1em;
+            }
+
             h1 {
-                font-size: 1.8em;
+                page-break-after: avoid;
+            }
+
+            p {
+                page-break-inside: avoid;
+                orphans: 3;
+                widows: 3;
+            }
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --bg-color: #ffffff;
+                --text-color: #000000;
+                --accent-color: #0000ff;
+                --border-color: #000000;
+            }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
-    <h1>The Second Sex and the Third Force</h1>
-    <div class="author">by Dr. Elizabeth M. Drews</div>
-    
-    <div class="note">
-        This paper is a rough, rough draft and will be revised extensively. 
-        Any suggestions you have for additions, subtractions, or modifications will be appreciated.
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header controls -->
+    <div class="header-controls">
+        <button class="control-btn" id="themeToggle" title="Toggle theme">🌓</button>
+        <button class="control-btn" id="fontSizeDown" title="Decrease font size">A-</button>
+        <button class="control-btn" id="fontSizeUp" title="Increase font size">A+</button>
+        <button class="control-btn" id="focusToggle" title="Toggle focus mode">👁</button>
+        <button class="control-btn" id="tocToggle" title="Table of contents">≡</button>
     </div>
-    
-    <p>This paper is a rough, rough draft and will be revised extensively, Any suggestions you have for additions, subtractions, or muitiplications will be appreciated, NOL FOR GENERAL DISTRIBUTION THE SECOND SEX AND THE THIRD FORCE” by Dr.</p>    <p>Drews &quot;Includes Neo-Freudians, Post-Freudians, the Organismic and Gestalt schools, Lewinians, Phenomenologists, the Self, Growth and Human- istic schools, etc., etc., etc.</p>    <p>THE SECOND SEX AND THE THIRD FORCE Little girls are much less apt to be disturbed emotionally than are little boys who are their agemates.</p>    <p>Child guidance clinics report seeing four boys to every girl.</p>    <p>Far fewer girls have speech problems and reading problems, fewer drop out of school before graduation, and fewer become delinquent--all in contrast to male counterparts of the same age.</p>    <p>These girls seem to come near to fitting definitions of creative productivity and wellfunctioning mental health--they are effective person- alities.</p>    <p>They combine, as do creative artists and scientists at the adult level, the feminine qualities of humane concern, aesthetic sensibility and good communication skills with the masculine traits of efficiency, theoretical orientation, intel- lectual aggressiveness, and egostrength.</p>    <p>Studies of high school students~ and college students show girls rating higher than boys on qualities and attitudes related to creativity and mental health.</p>    <p>Girls not only have creative attitudes but are also productive and contributive mem- bers of the school society.</p>    <p>They consistently get better grades than boys, both in high school and college, they hold more of- fices, and participate in more activities.</p>    <p>There are occasional complaints about the girls being less spirited and more self critical than the boys, but in general they produce and do it well and happily.</p>    <p>In contrast to the positive mental health and creative ‘attitudes of the school girls, adult women? are said to be more neurotic than adult men. * They often retreat into private and family worlds and no longer receive the rich stimulation of the outer worids--the technological, aesthetic, natural, and human.</p>    <p>They do not continue to enhance their 01d knowledges and to re- arrange what they know to meet the emerging requirements of an everchanging world.</p>    <p>To put it simply, such women can scarcely carry on interesting conversations with their husbands.</p>    <p>The problem is--if the truth were known--that they did not find real commitments, genuine interests, true foci for lifetime learning in school.</p>    <p>As students they did well what was expected and had their basic needs met--they were accepted, recognized, and suc- cessful.</p>    <p>However, they did not become selfactualizing and autonomous” and therefore were unable to work out a meaningful, productive life in relation to both the family and the larger world.</p>    <p>Outside reinforcements, pleasing others (the teacher) remained necessary for them for they had not gone beyond the need motivation level.</p>    <p>After the young women supplants being a student with being a homemaker, the expectancies as to tasks and interests are no longer intellectually challenging and so- ciety does not apparently, except in stereotypic terms, value the tasks required of the mother and the housewife.</p>    <p>The woman who does not already have a commitment to an intellectual venture, and ego strength as well, may feel confined by the restrictive role that society prescribes.</p>    <p>In such a situation, some women regress to an intellectually inactive state and others realize something is wrong but find few patterns and little encourage- ment for changing this state of affairs.°© The fact that the psychological and intellectual needs of adult women seemingly are not being met is accompanied by societal problems of a grave and pressing nature.</p>    <p>There seems to be little doubt where everyone stands on this and with an everincreasing humane- ness and kindheartedness we are willing to say that all should survive. !</p>    <p>Beyond survival (which might turn out to be a sub- sistencelevel affair--I understand they are raising algae in sewage but that people are having trouble digesting the chloro- phyl.) we can turn to other societal concerns--for example, im- proving the human condition.</p>    <p>The human condition can be described in many dimensions, all of which show deficiencies in development.</p>    <p>It is readily apparent that physical man in the world at large is still a hun- gry, ill and generally unfortunate creature.</p>    <p>The average man in India lives only half as long as the average Englishmen.</p>    <p>The South American lives to be 35--North Americans live to be 70, and as C.</p>    <p>Wright Mills /@ said, perhaps this is why we are re- sented so much.</p>    <p>The thinking man (which we assume an adequate world citizen must be) remains a Hellenistic ideal still to be realized.</p>    <p>Over half of the adults in the world cannot read and write and more than half of the children are not in school.</p>    <p>World problems are approached, and sometimes even equalled, in poignancy and urgency by the problems that have developed or that we have always had with us in the United States.</p>    <p>Health and mental health in the positive sense are just being defined and the old problems--from pestilence to dementia--are by no means solved.</p>    <p>The shortage of nurses, the refusal of many hos- pitals to accept Negroes, the prevalence of disease among Amer- ican Indians, and the absence of any concern for the health of migrant workers--all sully our dreams of American citizens as men of dignity.</p>    <p>Nor have educational needs, despite our claims to liter- acy, been met adequately.</p>    <p>Many of our schools--we can point a finger at the south and elsewhere-~are a national disgrace.</p>    <p>Schools can and do create environmental deprivation which, in turn, produces perceptual defect® and an inadequacy in learning.</p>    <p>We have done too little to provide meaningful materials and ex- citing activities for the onethird who come to school not ready to learn to read;~ and we have similarly failed those who never learned quite well enough--who started out behind and lost ground every year thereafter--the slow learners, the disabled readers, the potential dropouts, and the predelinquents.</p>    <p>We know very little about how young children learn and still less about adolescent learning (although we have documented their dating and delinquency patterns).</p>    <p>The research has not been done and the theory has too often ignored and too rarely focussed upon the actual teaching situation.</p>    <p>Fortunately there are the beginnings of some scholarly investigation and welldesigned experimentation in the schools, but there is also a crucial need for inventive programs and innovative teachers.</p>    <p>What was right for grandpa is not right for the child of today and tomorrow, and I have never been fully convinced that it was right for grandpa.</p>    <p>These are only suggestions of the human needs our society faces.</p>    <p>I have spelled out educational needs in greater detail since my own research is in this area and I am more acutely aware of deficiencies.</p>    <p>However, mental health problems should be men- tioned--such as the fact that 4 out of 5 counties have mental health services and that it is estimated that 7-12 per cent of American school children are emotionally disturbed.</p>    <p>This paper, presenting as it does an overview of the individual woman&#x27;s and the collective society&#x27;s problems, would be patently inadequate if it did not allude to the societal prob- lems of women who work.</p>    <p>After all, a recognition of these prob- lems resulted in the establishment of the Commission on the Status of Women of which this committee on education is a part.</p>    <p>The economic and social inequalities that women face are well known by at least the members and affiliates of the commission.</p>    <p>And surely we would also agree that there are too many Americans who have unmet needs and too many people in the world who suffer from excessive want and privation. (Since we are not yet communi- cating with other planets we do not know whether or not this is par for worlds at large.) It takes only a superficial grasp of the situation to realize that the attitudes and talents women have--such as aesthetic sensitivities, communication skills, and concern for human beings--could go far in meeting some of these problems.</p>    <p>Of course, recognizing problems and even know- ing an answer is not enough to insure action (knowing the con- sequences, i.e., throat cancer, doesn&#x27;t keep us from smoking).</p>    <p>The obvious use of such able and relatively unemployed women on real and urgent problems may be difficuit due to known prej- udices and unexplored intolerances.</p>    <p>Yet somehow we must bring the woman with her needs and the society with its needs into a complementary and mutually enhancing relationship.</p>    <p>These concerns with human problems are relatively recent.</p>    <p>The mental health movement stems from Clifford Beers&#x27; pioneer work in the early 1900&#x27;s, and programs of special education and intensive work with the physically afflicted have largely devel- oped since World War II.</p>    <p>Snow!+ has commented, society is at last showing a trend toward human kindness.</p>    <p>A group of adolescents recently discussed this point and one of the brash- est but most idealistic said spontaneously, &quot;It&#x27;s cool to care.&quot; And the psychologist Shoben?? has said with obvious relief, &quot;At last it&#x27;s respectable to be responsible.&quot; Not only can we document such observations but we also can cite two parallel trends in theory that seem to bode well for man&#x27;s future development.</p>    <p>There is a developing literature on what is called the positive evolution of society as well as much that has been written on the positive evolution of man.</p>    <p>Surely as humane concerns become increasingly respectable and positive development (not just curing of illness and remedying privation) is more generally valued and fostered, women will be encouraged to work in this direction.</p>    <p>Our hope is that they can become fully developed (with the peripheral benefit of being personally pleased with the product) as well as socially contrib- utive.</p>    <p>A large number of disciplines are studying and develop- ing portrayals of the evolved individual.</p>    <p>He is variously de- scribed in psychological terms as mature, selfactualized, fully- functioning, and productive.??</p>    <p>A more socialpsychological view, embracing such concepts as humaneness, &quot;universal man,&quot; and emerg- ing mind, has been expressed by anthropologists and biologists.?4 Historians and philosophers speak of heroes and philosopherkings.?°?</p>    <p>Beyond the philosophical and theoretical outlines--the sketchedin model of what man may be, should be, and occasionally has been--there are at present a number of studies (completed or in process) of creativeeffective individuals.+® These in- dividuals, as we have come to know them through the descriptions, continue to grow and change and develop--to enhance what they are, to become more nearly what they might be.</p>    <p>They are described as planful and optimistic and outwardly concerned.</p>    <p>Many of them have extended self beyond the microcosm of their own concerns into the macrocosm of societal need.</p>    <p>In fact, the most mature focus primarily on problems outside of themselves.</p>    <p>They have social conscience, feel for and with mankind, and want to con- tribute to the public welfare. | =a LR ST Ci(‘“‘ié‘“(i‘“(‘ CCT The idealized society and the idealized image of the individual bear striking similarities, especially in such an area as humane concern and human development.</p>    <p>The good society+! as it has been conceptualized would seem to foster the develop- ment not only of thoughtful and farseeing individuals but also to allow far more people to develop their potentialities.</p>    <p>It is 18 that certain vealues--kindness and tenderness as my assumption well as creative innovation (growth)--are better than other val- ues--hostility and destruction and lack of growth (stagnation or regression).</p>    <p>It is now felt that qualities of the good society and of the effective and humane individual’? can be abstracted and that some of the antecedents (early stages of growth) of this effec- 20 A question tive adulthood can be scientifically documented. arises as to whether these qualities, denoted as creative and mentally healthy in the adult, can be found in children or ado- lescents.</p>    <p>The companion question is: if creative qualities can be found in certain of our youth, do they give us an adequate basis for predicting creative and effective behavior in adult- hood?</p>    <p>From exploratory studies recently done it is our belief that these qualities are apparent in the young adolescent, and we assume from our studies of the biographies and case histories of creative adults that the early emergence of such qualities is one of the best indicators we have of creativeeffective adult development.</p>    <p>We have yet to learn how to foster and facilitate the growth of these qualities; however, several theories have been developed and a good deal of educational experimentation is being directed toward this end.</p>    <p>Psychological research (particularly in certain studies of learning as in learning to read) has shown that young people who are positively disposed will respond better than those who are negatively disposed toward the proffered development.</p>    <p>For example, good readers--students who like to read--characteris- tically improve more when given special reading help than do poor readers--students who do not like to read (although the poor readers might seem to have more room for development).</p>    <p>In our research we have been able to identify three rather distinct value systems or achievement drives in bright ‘young people. we have tentatively called these types creative intellectuals, studious, and social leaders and have (through the study of their behavior and attitudes by observations, inter- views, questionnaires, and attitude, personality and value scales) found certain rather clearly marked differences that indicate that the creative intellectuals are developing quite differently than the other groups of adolescents.</p>    <p>From the evidence that we have so far, we believe this to be in the direction that has been described as selfactualizing.</p>    <p>These three adolescent growth patterns*+ can be placed on a continuum to show differences more clearly.</p>    <p>The creative intellectual is placed on the end that seems to us to be more predictive of development of a humanistic and idealistic system of values, the studious falls somewhere near the center and OO RTT rir tr 7 277i rod ee Pe Smee ESSE ease cee tienen REE characteristically tries to maintain traditional values, and the social leader falls at the other end of the scale and favors hedonistic values.</p>    <p>Our preliminary research on these types has consisted of personality, attitude, and value assessment of almost 1000 adolescents of superior ability and a comparison group. of several hundred average students.</p>    <p>Observations and individual interviews have supplemented this information.</p>    <p>Of these students about 20 per cent of the intellectually superior (almost equally divided between boys and girls) and 5 to 10 per cent of the average may be said to have a creativeintellectual orientation.</p>    <p>The creative intellectuals are concerned about the enhance- ment and improvement of the state of man and his affairs.</p>    <p>They believe in growth, pianned change, creative innovation, and are generally optimistic. uihey not only feel that individual man and social institutions can be improved, but many of them also seem willing to work on the project.</p>    <p>In contrast the studious (60 per cent of our superior students, with an overbalance of girls) seem to be mainly concerned with following the dictates of parents and teachers.</p>    <p>They do not rebel or ask for progress or change but instead want to conserve or preserve. they are fine, upright citizens--getting exceptionally good school grades and the best citizenship ratings from their teachers--and have both Protestant athic (in wax veber&#x27;s terms) and &quot;conventional wisdom&quot; (as John Galbraith has described it).</p>    <p>The social leaders march to quite a different drumuer.</p>    <p>They espouse what is sometimes called the dominant American value be) system--hedonism and materialism.</p>    <p>This group (20 per cent of the superior adolescents with an overbalance of boys) is interested in personal gain (affluence, power) and do not seem to worry about the destruction or exploitation that might be necessary to accomplish this. hey express disbelief in man&#x27;s ability to im- prove, and feel that institutions need not change.</p>    <p>They will probably be church members if such actions prove to be socially advantageous, but they have little belief in or tolerance for religious and philosophical thought or for formulations that 22 .</p>    <p>They see man as a conniver and an depict man as basically good. exploiter and feel that they must master the game. thus with tendencies toward destructionexploitation (often in the nane of pleasure and personal profit) on one end of the continuum and a belief in enhancemwentim,rovement on the other end, the issue seems clear.</p>    <p>These creative intellectuals are the young people who we predict might become creativeeffective adults with humane concerns.</p>    <p>Their behavior and belief patterns are much like those of the creative, selfactualizing adults now. being studied.</p>    <p>There are, it has been noted, as many girls as boys in this group.</p>    <p>The girls seem to be characteristically feminine with somewhat more of tie subjectiveasthetic orientation in contrast to the boy&#x27;s objectivetheoretical orientation; but they seem to be developing a good balance in terms of malefemale qualities.</p>    <p>The adolescent girl seems to have much in the way of potentiality.</p>    <p>The question is will she become selfrealized as this term is now being defined, i.e., will she fully develop and ae fully use her abilities?</p>    <p>The evidence seems to indicate that women, even most of those who are intellectually able and creatively inclined, have not developed fully nor made social contributions in line with their promise and potential.</p>    <p>Male researchers report that women contrasted with men have contributed fewer new theories, been less influential in social change, and developed fewer recognized artistic innovations.</p>    <p>As was noted earlier, we have been working with the test results of a large number of able adolescents over the past few years and assessing them in terms of creativeproductive dimensions.</p>    <p>Much of our data has been gathered by using the same instruments that McConnell and Heist have used in their studies of able college students.</p>    <p>Interestingly enough, despite ellegations that adult women are not particularly creative in terms of such accomplishments as musical compositions and scientific discoveries, girls generally test higher than boys in attitudes that are desig- nated as creative, e. g-, complexity, aesthetism, thinking intro- version, and social maturity.</p>    <p>Our studies also show girls as being relatively more open (a quality needed for creative develop- ment) and less prejudiced (a quality of obvious importance in human concern for other people.) Boys, even very able ones, receive higher scores (and thus are measured as less tolerant) on the Kokeach Dogmatism and Rigidity Scales.</p>    <p>Beyond the promise shown in terms of creative and open attitudes, we may also look at the potentialities of the able female in other ways.</p>    <p>There is little evidence that she is intellectually less capable than her male counterpart although she may be somewhat more highly developed in verbal areas and relatively less developed (or skillful) in mathematical and scientific areas.</p>    <p>This special female verbal facility is apparent very early: little girls learn to talk sooner and the story goes that they talk more (and certainly with less aifficulty).°4 They also learn to read more easily and seem to maintain an advantage in at least communication mechanics and techniques (skill in reading, spelling--fluency in handwriting). women are also socially sensitive and humanely concerned.</p>    <p>Among girls these characteristics can be seen as preferences for people over things (they do not readily make creative innovations when faced with a red fire truck but they do very well on the nurse&#x27;s kit, as Torrance points out).</p>    <p>Although girls are less aggressive socially than boys and cften talk less in mixed groups, they tend to be sensitive to individual differences and to be considerate and accepting of others.</p>    <p>As Torrance says, &quot;In our culture, sensitivity is a feminine virtue, while independence is a masculine virtue.&quot;°?</p>    <p>However, for the girl or woman to be creative she will need to be independent as well as sensitive.</p>    <p>Further, women seem to be particularly sensitive in an aesthetic sense.</p>    <p>With the adult woman this aesthetic sensitivity is often at the appreciator or at the doitformyownenjoyment level and not in terms of a real drive to stimulate interest in art for all through education or to paint or sculpt in transcendant ways.</p>    <p>There seems to be reason to believe that here is an area in which women have real strength in terms of inclin- ations and an area in which our society (with everincreasing leisure time and the goal of complete development for each indivi- dual) has great needs.</p>    <p>This aesthetic realm, at least in terms of large scale involvement of people, is practically uncharted.</p>    <p>We have seen that there are bases for describing individuals as having different value systems, kinds and intensities of interests, styles of thinking, openness to possibilities, potential for commitment, humane concerns, aesthetic sensitivities, verbal skill, possibility (liking for) involvement in intellectual tasks, desire to make a contribution and to make changes, and belief in self and human beings in general. ie have seen that there are as many girls as boys who seem to have what we have termed creativeintellectual predispositions and humanitarian- idealistic value systems. ie also feel that despite all these abilities and inclinations women do not develop fully ina personal sense nor contribute fully in a societal sense.</p>    <p>The crucial issue is how to cultivate these creativecontributive womeninembryo to increase growth in the directions specified.-° It is my contention that there are good risks and bad risks in any enterprise. kesearchers often comment that certain investigators almost always get results because they design their studies in ways that pay off.</p>    <p>This thinking may relate to discussions of sarendipity and luck.</p>    <p>Many scientists say that we make our luck by being well prepared and ready with the facts when a lucky accident happens. sg —— a5 Interpreted in terms of helping girls to develop fully and make social contributions, I would say that this means that some girls are good bets and others are not.</p>    <p>All women suffer when a girl is given a scholarship and does not finish school or when a woman gets a medical degree and never practices or when a woman walks out on a job in the middle of the year without prior warning because she wants to marry or move with her husband.</p>    <p>I feel that we now have a few guidelines for choosing girls who have strong creativecontributive inclinations and who may persevere in their commitments.</p>    <p>We are beginning to be able to pick out the good risks.</p>    <p>It is my feeling that the good risks will be most apt to make full use of scholarships and encouragement.</p>    <p>By helping the girls who appear to have commitment and concern for society and a strong desire to transcend themselves, we may find more women making important contributions.</p>    <p>Out of the literature concerned with mentally healthy and creative people and the few things we know and/or surmise about creative women, °° we find that one of the aspects of cre- ativity is a desire--even a deeprooted need--to go beyond the self.</p>    <p>Gordon Allport speaks of this as an extension of the self.</p>    <p>This going beyond &quot;the self&quot; and beyond the &quot;here and now&quot; and beyond &quot;everyday reality&quot; to make of life more than it appears to be is all important.2?</p>    <p>If we add to this transcendental per- spective and vision a belief in a cause of a new solution ora new art form, we have what I have termed commitment.</p>    <p>It is my thesis that for women commitment may be more important than career.</p>    <p>The engagement with problems can be car- 30 With ried on in all of the discontinuities of a woman&#x27;s life. a goal and a dedication a woman can move from student role to researcher to professional practice to parttime consultant work to fulltime homemaking.</p>    <p>With genuine commitment she can work on the problem that she feels most important in any of these contexts.</p>    <p>The point is that the posing of questions and the searching for answers must always be there--not only maintained but enhanced. (She writes Gone with the Wind on grocery sacks and tries out new mathematical formulas on a blackboard above her sink.) Beyond the fact that a need for commitment is essential for a creative and a contributive life, there is also the need for learning how to learn.</p>    <p>Not only is there the fact that one must seek and continue search all through life, but that the boundaries and avenues of search must be aefinea.?+ How do we develop ways of creating or inquiring or solving problems or thinking. critically? - Recently researchers have been experimenting with spe- cific approaches that are felt to foster creative thinking, &gt; inquiry method, &gt;&gt; discovery,°* Socratic questioning, &gt;? and other problem solving approaches. °° In discussing these new approaches and also the new curricula Cronbach has this to say, &quot;The aim of the new curricula is less to equip the student with the know- ledge he is likely to need than to advance the student&#x27;s awareness LT of the origin of knowledge, its trustworthiness and its limita- tions.</p>    <p>More important than his learning any one fact in school is his willingness to learn from the discipline during his adult life.&quot;?/ All of these methods of &quot;learning how to learn&quot; and the new ways of looking at the structure of knowledge have ad- vantages over rotelearning and recitation~© approaches in that they give the learner more autonomy, an essential when the learner is on his own as the woman may be during parts of her life, and certainly an essential for anyone who hopes to be creative.</p>    <p>The development of commitment and of critical thinking skills, then, are the aims I am suggesting for creativeintel- lectual girls.</p>    <p>The goals (as is usually the case in education) can be more readily set than the processes by which we attain them.</p>    <p>However, there are clues emerging from educational and psychological research as to the kind of educational experiences-- methods and approaches--that are most likely to develop such qualities.</p>    <p>Selfawareness (What are my needs, values, talents?) and an awareness of possibilities (What are the arrays of social causes, educational reforms, new art forms, or scientific break- through?) are vital before a choice of direction or a commitment can be made.</p>    <p>Selfawareness and clarification of goals can be fostered by counseling (particularly clientcentered counseling approaches) and awareness of possibilities can come about by a wide variety as well as challenging and stimulating educational exposures.</p>    <p>Modelscan do much to supply awareness of both what to do and how to do it, what the world offers and how to deal with the offerings.</p>    <p>Since creativeeffective female models who also have social charm and feminine appeal (seemingly a necessity if we are to lure the young) are not always available, 9 there must be carefully planned programs for presenting such models.</p>    <p>Biographies and fiction, radio, tapes, film and personal appear- ances all may be used.</p>    <p>These should be prototypic women (ideal- ized images) who face the full and complex world (family responsi- bilities included), have developed a dedication in terms of work- ing on a significant problem, and are more shapersof than shaped- by their environment.</p>    <p>The pattern is indispensable but students (especially girls) also need encouragement and recognition.</p>    <p>Someone who says, &quot;You would make a fine scientist&quot; or &quot;I see that you have a special flare for writing&quot; and follows this up with specific suggestions and help when it is needed.</p>    <p>The encouragerrecog- nizer~promoterpatronsponsor (male or female) differs from the model (although see person may be the same) in that this indi- vidual (the sponsor) is more than a patternoflife to be identi- fied with and studied.</p>    <p>The sponsor must, in addition, take the active role of recognizing and encouraging talent and predisposi- tion in the girl.</p>    <p>A teacher or a family friend may play this role although often it is enacted by a parent or a relative.</p>    <p>Beyond directline human contacts there should be oppor- tunities for growth supplied in the school, home or community-- laboratories, discussion groups, art and music classes, cultural events, books and magazines. (Girls who do not sample the vari- ety of rich offerings in our middlesizedand large cities are losing much of their education.) And as the girl begins to mature there must be chances to participate actively--to sponsor or direct discussions, to be a laboratory assistant, to lead a group in social innovation, to perform in musical events, or to display her paintings.</p>    <p>There are no limitations, in terms of geograph- ical locale, to the possibilities for participation--*° and the doing is unbelievably rewarding.</p>    <p>As one girl said, &quot;The girls who haven&#x27;t organized or done something on their own just don&#x27;t know what they are missing!&quot; With all this commitment and these lasting skills, the question now arises: what are women to do?</p>    <p>Probably many of the answers come from their own predispositions and talents.</p>    <p>This does not mean that with the great need for talented tech- nologists women should necessarily eschew these areas. (Women make excellent computer programmers and fine laboratory tech- nicians.) However, since the great needs of our society are for maintenance and enhancement of the natural and aesthetic worlds and for farreaching innovations in the human world, and since our creativeconcerned girl has been shown to have communi- cation skills, humanitarian leanings and aesthetic awareness, there is every reason to encourage these girls to develop in ways that their talents and attitudes lead them.</p>    <p>In the presentation of the world and its complexities, there should be a companion pre- view of the problems to be solved.</p>    <p>Creative and intelligent young people are characteristically more interested in what is not known, than what is known--what is not solved, than what is a fait accompli.</p>    <p>They want something to work on and towards, and if they are mentally healthy and have adequate egostrength they do not object to the task being difficult and complex.</p>    <p>In the broadest terms, the problems that should be pre- sented to our able girls and particularly to the creative intel- lectuals include the ones that were discussed earlier-~-survival, the human condition, basic needs (educational, mental health and physical health) and enhancement possibilities (such as prob- lems in positive mental health and in the aesthetic world).</p>    <p>Drews, Elizabeth lMi., &quot;A Study of Non-Intellectual Factors plpal Superior, Average and Slow High School Students,&quot; Cooperative Research Grant, (in preparation).</p>    <p>R., Heist, Paul, Reports released by the Center for the Study of Higher Education, University of California, Berkeley.</p>    <p>Srole, Leo, et al., Mental Health in the Metropolis: the Midtown Manhattan Study, Volume I. (New York: McGraw-Hill, 1962).</p>    <p>Gurin, Gerald, et al., Americans View their Mental Health (New York: Basic Books, inc., 1960).</p>    <p>Abraham Maslow (Motivation and Personality, New York: Harper &amp; Brothers, 1954) found that few people--male or female-- could be considered selfactualizing or autonomous before the age of 35 or 40.</p>    <p>Apparently it takes a great amount of recognition and experience before basic needs are met and the individual has grown beyond and become independent of them most of the time.</p>    <p>Since most girls marry at an early age and since society does not fully value her role as a homemaker and mother (which is often not intrinsically chal- lenging and satisfying for the intellectually able woman), the chances that they will actualize their potentialities are not good.</p>    <p>As one young woman looking at her former classmates reports: &quot;The girls who were devoted to molding school spirit now entertain themselves (but not their husbands) with neighbor- hood gossip, and the insightful literature and psychology majors lose themselves in thirdrate novels and afternoon television serials that defy classification.&quot; We cringe at the thought of decimating Russian babies with germ warfare and shudder at what seems to be needless blood- letting in the Congo and in Algeria. rao, C.</p>    <p>Wright, Listen, Yankee (New York: McGraw-Hill, 1960).</p>    <p>There is a number of studies being conducted at present as to the effect of certain kinds of deprivation (sensory and environmental) on learning, both learning readiness and im- mediate and longterm learning.</p>    <p>Hebb, D. 0O., Organization of Behavior (New York: John Wiley &amp; Sons, Inc., 1949), has done a considerable amount of work in this area and the the- ories of Piaget also have been a major contribution.</p>    <p>Samuel Kirk at the University of Illinois has found that special experiences (nursery school) facilitate learning in preschool children from culturally limited backgrounds.</p>    <p>Fred Strodtbeck at the University of Chicago is at present giving prereading experiences with 4-yearolds from the tenements of Chicago--presenting books, food, and love simultaneously.</p>    <p>John Dewey (How We Think) has explored and theorized in this area; Jerome Bruner (The Process of Education) has suggested guidelines for programs and curriculum revision; however, the task remains to be done.</p>    <p>P., &quot;The Future of Man,&quot; The Nation Shoben, Edward Joseph, Jr., &quot;Culture, Ego Psychology, and an Image of Man,&quot; Teachers College, Columbia University, April, 1960 (mimeographed report).</p>    <p>This point of view is asserted by the &quot;third force&quot; in psy- chology and has been developed by E.</p>    <p>The emergence of man&#x27;s mind has been described philosophically, poetically and scientifically by such diverse personalities as N.</p>    <p>Among those studying, describing and testing the healthiest and/or most contributive species of mankind are A.</p>    <p>Further reference to the concept of the good society and the evolution and assessment of history&#x27;s values can be found in Herbert J.</p>    <p>Muller&#x27;s Uses of the Past, Morris Ginsberg&#x27;s &quot;A Humanist View of Progress,&quot; (Ihe Humanist Frame, editor: Sir Julian Huxley), Bertrand Russell&#x27;s Principles of Social Reconstruction, and the essays found in The National Purpose, (Essays by Adlai Stevenson, Archibald MacLeish, John W.</p>    <p>Abraham Maslow (Toward a Psychology of Being, New York: Insight Books, 1961) gives considerable support for such assumptions. 19.</p>    <p>The following are phrases used in the literature on positive mental health to describe qualities of the mature individual and which are strikingly similar to descriptive phrases used in creativity literature.</p>    <p>Measures are now being taken so that these qualities can be quantified and predicted. 1.</p>    <p>Allport, Gordon, Becoming, New Haven: Yale University Press, 1955 a. possession of long range goals central to person&#x27;s existence —- values &quot;termini of intentions&quot; unfinished structure gives dynamic power for future conduct b. acquisition of conscience as directive force for guiding actions along positive lines - &quot;generic&quot; conscience to guide style of being c. capacity to feel less and less satisfied with answers to better and better problems - &quot;propriate striving&quot; toward unity of personality; risk taking and varia- tion d. autonomy - &quot;selfobjectification . . . see personal equation clearly written out .. . follow with some success a selfchosen course of action 2.</p>    <p>Rogers, Carl, On Becoming a Person, Boston: Houghton- Mifflin Company, 1961 a. selfrealization, fullyfunctioning individual b. openness to experience - extensionality c. expressiveness, communication - relate to outer world d. autonomy - control over own behavior e. internal locus of evaluation f. willingness to be a@ process g. trust own ability to form new relationships with environment h. basic condition for fostering creativity is under- standing empathically i. p. 193 - &quot;I believe it will be clear that a person who is involved in this directional process which I have termed &#x27;the good life&#x27; is a creative person.&quot; 3.</p>    <p>Maslow, Abraham, Motivation and Personality, New York: Harper &amp; Brothers, 1954 a. selfactualization - growth motives (distant and often unattainable goals) b. autonomy - control over own behavior ec. respect for self and others d. flexible - tolerance of ambiguity e. philosophical sense of humor f. enthusiasm, spontaneity, and curiosity g&amp;. openness to and striving for new i cbiaieanania - risk- taking h. realityoriented - perception 20. ali a2 25. 26. 4.</p>    <p>Jahoda, Marie, Current Concepts of Positive Mental Health, New York: Basic Books, Inc., 1958 a. autonomy, independence - selfreliance in face of difficulties b. objective selfimage - healthy ego concept ec. selfrealization - blending of total personality toward achieving best of what might become d. perception free from distortion e. sense of values - long range goals f. empathy g. aesthetic appreciation h. flexibility i. productivity Huxley, Julian, &quot;The Humanist Frame,&quot; The Humanist Frame (editor: Sir Julian Huxley), New York: Harper and Brothers, 1961, p. 23; &quot;The welldeveloped wellpatterned individual human being is, in a strictly scientific sense, the highest phenomenon of which we have any knowledge; and the variety of individual personalities is the world&#x27;s highest richness.&quot; We recognize that in most cases it would be difficult to find examples of &quot;pure types&quot;--especially among adolescents.</p>    <p>Further, combinations and the overlapping of value systems often tend to cloud the picture.</p>    <p>However, evidence thus far indicates that these three patterns or value orienta- tions exist and the strongest plays an important role in determining the direction of growth and societal roles that an individual will take.</p>    <p>The dynamics of this phase of personality development are yet to be fully described.</p>    <p>Martin Luther King&#x27;s and Gandhi&#x27;s views are considered &quot;troublesome&quot; by many businessmen. (Smith, Lillian, &quot;A Strange Kind of Love,&quot; The Saturday Keview, October 13, 1962).</p>    <p>Heist, Mimeographed papers from The Center for the Study of Higher Education, University of California, Berkeley.</p>    <p>Paul, Guiding Creative Talent, (Englewood Cliffs, New Jersey: Prentice-Hail, Inc., 1962), p. lle.</p>    <p>There are many young people who do not clearly choose either the open humanistic behaviors or the closed, nonintellectual behaviors; and it is encouraging to note with this group that, in describing their &quot;ideal selves,&quot; they choose activ- ities that are relatively more humane and imaginative than when they describe their &quot;real selves.&quot; 27. 28% 29. 30. pie It is said that &quot;Lucky accidents don&#x27;t happen to dead cows.&quot; In reviewing references to women.who have &quot;made a difference&quot; in the past, we have noticed a large proportion who have been socially creative (e.g., the great humanitarians) rather than creative in areas such as science or music.</p>    <p>In the existing studies of creativity there seems to have been little intensive effort to assess and describe socially creative people, although A.</p>    <p>Anderson have described their behavior in general terms.</p>    <p>Blackham has stated (&quot;The Human Programme, The Human- ist Frame, Editor: Sir Julian Huxley, New York: Harper &amp; Brothers, 1961, p. 141): &quot;. . . reality is tolerable only in so far as it is being transcended.</p>    <p>But that is the human vocation.&quot; Although the discontinuous pattern of a woman&#x27;s life creates. professional problems, there are some aspects which might be considered advantageous.</p>    <p>Mary Bunting (&quot;A Huge Waste: Educated Woman Power,&quot; New York Times) has said: &quot;Perhaps women, because they are not the breadwinners, could be most useful as the trailbreakers, doing the unusual job that men cannot afford to gamble on.</p>    <p>They may, in fact, be far more valuable working on the fringes, where there is always room, than competing with men in the intellectual market places.</p>    <p>The unexplored is boundless.&quot; More and more our educational emphasis must be on providing a liberal arts or general education which will prepare a generalist rather than a specialist (see kockefeller Report Pursuit of Excellence).</p>    <p>If such education is given in the late high school and early college years (and this is the trend of curriculum change for the able student) there will still be time for some specialization before graduation.</p>    <p>However, &quot;specialization&quot; or &quot;specific career&quot; may not be so much the point for women (beyond an early twenties round with jobholding) as is commitment.</p>    <p>Morison points out that &quot;technical problems which now divide the special- ties will in large part have been handed over to the com- puters and we will have taught ourselves a language, we can all use in common . .. [we must concentrate then]... on the even more demanding tasks of generalization, syn- thesis, and judgment which only man can carry out. [Edu- cation must teach us to think critically andj; &quot;to grasp general principles, detect relevance where none was seen before, and create new conceptual schemes. . .. [above all women must assume moral responsibility since in our new interconnected world what one person does or does not do is more important than ever]. .. .</p>    <p>The point is that we are now living in a world in which almost everyone of our 32. 33. 36. 37. 38. 39. 40. actions has in some way an effect on almost everyone else in that world.&quot; .. . [Women must know that what they do affects everyone] &quot;everywhere and at all times in the future, [and] they must care about it.&quot; Torrance, Paul E., Guiding Creative Talent (Englewood Cliffs, New Jersey: Prentice-Hall, Inc., 1962).</p>    <p>Richard, The Hlementary School Training Program in Scientific Inquiry, Title VII, Project Number 216, National Defense Education Act of 1958, Grant No. 7-11-038.</p>    <p>Beberman, Max, &quot;Math Is Fun,&quot; Time, (July 25, 1960, p. 24).</p>    <p>Don Oliver of Harvard is presently studying approaches for teaching &quot;Socratic questioning&quot; in junior high school social studies classes under a U.</p>    <p>Bruner, Jerome, The Process of Education, Cambridge, Massa- chusetts: Harvard University Press, 1960.</p>    <p>Cronbach, Lee J., &quot;Psychological Issues Pertinent to Recent American Curriculum Reforms,&quot; (paper delivered on part of symposium on &quot;Motivation, Learning, and Teaching,&quot; XIV, International Congress of Applied Psychology, 1961).</p>    <p>Fact learning, due to the magnitude and changing nature of fields of knowledge, is no longer thought to be as practical as educators once believed, although Skinner is programming learning on ways to get facts into heads more quickly.</p>    <p>It is probable that attractive women scientists and scholars are more available for models than our able girls think.</p>    <p>However, @ survey we conducted for NSF three years ago showed that high school and college honor program girls considered women scientists to be most unattractive.</p>    <p>MacKinnon reports that women mathematicians were organizers-- gave plays, etc., when they were young.</p>    <p>Pee a Geo 4 EDUCATION FOR WOMEN A Bibliography of What Has Been Said Supplement 1 1961-1962 Evelyn Perloff, Ph.D.</p>    <p>Division of Educational Reference Purdue University &quot;Supplement 1&quot; to &quot;Education For Women, A Bibliography of What Has Been Said (1950-1961),&quot; brings this bibliography up to date.</p>    <p>That is, the Supplement comprises U.S. references in the area of education for women, which appeared from 1961 until autumn 1962.</p>    <p>In addition, perti- nent references which had been unintentionally omitted from the 1950=1961 bibliography, are now included.</p>    <p>The following indexes were again the primary sources utilized in compiling this supplement: (1) Cumlative Book Index (not Books in Print as previously stated), (2) Education Index, (3) Guide to Guidance, (4) Psychological Abstracts, (5) Readers&#x27; Guide, and (6) Sociological Abstracts.</p>    <p>Adhering to the original purposes for prepar- ing these bibliographies, only those references which either dealt directly with the education of women or were obviously related to specific aspects of educating women were included.</p>    <p>Objectives and projects relating to the education of women Factors of womanhood relating to the education of women Factors of womanpower relating to the education of women II.</p>    <p>General college plans and curricula relating to the higher education of women Specific college programs and evaluations relating to the higher education of women Goals, values, and preferences of coeds relating to the higher education of women (Bibliography, 1950-1961 &amp; Supplement 1, 1961-1962) Pages 1-10 19-22 1-5 19-20 6-8 ei 9-10 11-18 23-29 11-12 23-24 13-15 25-26 16-18 27-29 Item Numbers 1-153 285-325 1-82 285-312 83-128 313-319 129-153 319-325 154-284 326-408 154-189 326-355 190-233 356-374 234-28) 375-408 Supplement 1 I The Education of Women - General References A.</p>    <p>Ladies’ Home J., 1961, 78 (Apr.), 43+. so eagse 292. ae: Anna Le Rose.</p>    <p>College Board Review, 1962, 46 (Winter), 27-31. 295.</p>    <p>Junior college must provide appropriate educational programs for women.</p>    <p>Conversations with Cassandra: who believes in education?</p>    <p>McBride, Katherine E., What about women&#x27;s education?</p>    <p>Women&#x27;s education: facts, findings and apparent trends.</p>    <p>NAWDC J., 1960, 2h (1,0cet.), 35-39. -19¢ 301. 302. 303. 304. 305- 306. 307. 308. 309. 310.</p>    <p>Vocat J.; 1962, 37 (Apr.), 14-15. ia sca Raushenbush, Esther.</p>    <p>School dropouts: the female species. | WNAWDC J., Stivers, E.</p>    <p>Report of a conference commemorating the Oth anniversary of the Women&#x27;s Bureau, June 2+ 3, 1960.</p>    <p>J., 1962, Sl (May), 12-14. ee Zapoleon, Marguerite W.</p>    <p>NAWDC J., 1960, 2% (1, Cet.), 40-47. -20- Supplement 1 B.</p>    <p>Factors of womanhood relating to the education of women 313. 314. 315. 316. 317. 318. 319.</p>    <p>Bulletin of the Committee on Human Development, University of Chicago, 1958.</p>    <p>Child Developme, 1960, 31, 721-728. -2]- Supplement 1 C.</p>    <p>Factors of womanpower relating to the education of women 320. 321. 322. 323. 32h. 325.</p>    <p>The comparative academic achievement of young and old.</p>    <p>The performance of aged females on five nonlanguage tests of intellectual functions.</p>    <p>Posthigh school plans of senior girls in relation &amp; scholastic aptitude.</p>    <p>Sex differences in high school scholarships, a study of Connecticut high schools in 1956.</p>    <p>For mature women: a late career; For residence halls: a new source of staff.</p>    <p>Is discrimination against talented women necessary?</p>    <p>Quart., 1961, 9; 179- -~22= Supplement 1 II The Education of Women - Higher Education General college plans and curricula relating to the higher education of women 326. 32Ts 328. 329. 330. 331. 332. 333. 335- 336. 337- 338.</p>    <p>Public Relations Department, Woman&#x27;s College, University of North Carolina, 1959.</p>    <p>Times Mag., May 7, 1961, 23+. aaa Change and choice for the college woman.</p>    <p>AAUW J., 1962, 55 (May), 203-284. eo ee Cirtautas, Kazys C.</p>    <p>Be, Jre Prediction of first year college dropout, using ACL need scales.</p>    <p>Heist, P. &lt;A commentary on the motivation and education of college women.</p>    <p>Do present and future responsibilities of higher education pose special problems in the education of women.</p>    <p>Horn (Ed.), Proceedings of the 8th mational conference on higher education.</p>    <p>Utilizing the stepwise multiple regression procedure in selecting predictor variables by sex group.</p>    <p>Measmt., 1962, 22 (Summer), 401-404. -23- 341. 343.</p>    <p>Bul 345. 346. 347. 348. 349. 350. 351. 352. 353. 354. 355+ Supplement 1 Ludeman, W.</p>    <p>Declining female college attendance: causes and implications.</p>    <p>Washington, D.C.e: Catholic University of America Press, 1957.</p>    <p>Address at National Association of Deans of Women, Washington, D.C., April, 1954.</p>    <p>National Education Association, National Association Women Deans and Counselors.</p>    <p>Washington, D.C.: National Education Association, 1962.</p>    <p>Top level training of women in the U.S., 1900-1960.</p>    <p>Sex and equal opportunity in higher education. ——— &lt;——— em seme Undergraduate education for women.</p>    <p>Report of a conference at Earlham College, April 29 = May 1, 1962.</p>    <p>What&#x27;s next for the girl who graduates from high school. (revised leaflet) Bloomington, Ind.: Director of Admissions, Indiana University, 1960.</p>    <p>AAU J., 1957, 51 (i, O6tej, TA. aR =O Supplement 1 B.</p>    <p>Specific college programs and evaluations rélating to the higher education of women 356. 358. 360. 362. 363. 364. 365. 366. 367. 368. 369.</p>    <p>Study of the preparation for for the role of parent~aseeducator in selected Catholic women&#x27;s colleges. “Washington B D.C.: Catholic University of America Press, 1961.</p>    <p>Ellis, Constance D. (Ed.) The magnificent enterprise: A chronicle of Vassar College.</p>    <p>The role of women&#x27;s colleges in the physical sciences.</p>    <p>Report of a conference held at Bryn Mawr College, Bryn Mawr, Pae, 1954.</p>    <p>Mademoiselle, 1950, 31 (Sept.), 122-125, National Science Foundation.</p>    <p>Unfinished business: continuing education for women.</p>    <p>Rec. 1961, 42 (4, Oct.), 261-269 Senders, Virginia L.</p>    <p>The Minnesota plan for women&#x27;s continuing education: 4 progress report.</p>    <p>Rec., 1961, 42 (4,0ct.), 270-278. -25- 370. 371. 372. 373- 374.</p>    <p>Torpey, We Ge The role of women in professional engineering.</p>    <p>Education for women in engineering in the U.S., 1885-1952.</p>    <p>Ann Arbor, Mich.: University of Michigan microfilms, 1955+ Women spark gain in science, math degrees.</p>    <p>Newsletter, 1961, 80 (Dec. 30), 432. ~26~ Supplement 1 C.</p>    <p>Goals, values, and preferences of coeds relating to the higher education of women. 375- 376. 377+ 378. 379. 380. 381. 362. 383. 384. 385. 386. 387. 388. 390.</p>    <p>Ann Arbor, Mich.: Author, University of Michigan, 1960.</p>    <p>Mademoiselle, 1951, 23 (Aug-), 233. —_— Bromley, Ann.</p>    <p>A study of women matriculants of the Chicago undergraduate division of the University of Illinois.</p>    <p>Ann Arbor, Mich.: University of Michigan Microfilms, 1954.</p>    <p>Woman&#x27;s place is in the wrong; address,Qct. 19, 1961.</p>    <p>NAWDC J., 1962, 25 (4), 148-155. eer Bumgarner, Fayne.</p>    <p>Social factors and OSPE scores for 46 women enrolled in the University of Oklahoma fall semester 1951.</p>    <p>A comparative study of the adult education activities of women&#x27;s business and professional groups in — Ann Arbor, Mich.: University of Michigan Microfilms, 1956.</p>    <p>Adult Leadership, 1954, 2 (Jan.), 2-3. vite 391. 392. 393- 394. 395+ 396. 397+ 398. 399. 400. hol. 402. 403.</p>    <p>Factors associated with graduate school attendance and role definition of the women doctoral candidates at the Pennsylvania State University.</p>    <p>Unpublished Masters&#x27; thesis, Pennsylvania State University, 1961.</p>    <p>Married women at Utah State University, spring quarter, 1960.</p>    <p>Proceedings, Utah Academy of Sciences, Arts, &amp; Letters, 1961, 38, 50-56.</p>    <p>Some intellectual attributes and educational interests of university women in various majors.</p>    <p>Ann Arbor, Mich.: University of Michigan Microfilms, 1960.</p>    <p>Commonweal, 1961, 74 (Apr. 28), 119¥121.{Disc.): Commonweal, 1961, 74 (Mar. 19), 207-209.</p>    <p>The motivation of college women today: a closer look.</p>    <p>Differences in occupational preference, stereotypic thinking, and psychological needs among undergraduate women students in selected curricular areas.</p>    <p>Selfacceptance and the mechanism of identification; . (college women) Ann Arbor, Mich.: University of Michigan Microfilms, 1957.</p>    <p>Background and personality factors and their implications for student selection in three women&#x27;s colleges.</p>    <p>Wilson (ga.) Institutional research on college students.</p>    <p>Atlanta, Ga.: Southern Regional Board, 1962. koh, 405. ho6. 4o8.</p>    <p>NAWDC J., 1962, 26 (1,0ct.), Ybh6, bi a Shuey, Audrey N.</p>    <p>Intelligence of college women related to family size, J. exp.</p>    <p>M- The married female school teacher: a continued study.</p>    <p>The relationship of selected variables. to the careermarriage plans of university freshman women.</p>    <p>Dissertation Abstr. 1962, XXIII, No. 1. woe. «29 Ey eS EDUCATION FOR WOMEN A Bibliography of uat Has Been Saia* 1950 - 1961 Evelyn Perloff Division of Educational Reference Purdue University The present bibliography is the first draft of a listing and categorizing of references in the area of education for women, which appeared in U.S. publications during the eleven year period, 1950-1961.</p>    <p>It&#x27;s major purpose is to include all that has been said (1950-1961) on the one specific subtopic of the woman problem, their education.</p>    <p>References covering other areas of the woman problem (employment, status, health, etc.) are also to be presented in separate bibliographies, with crossreferences included.</p>    <p>A first addition, however, is to be a 1962 bibliography on the education of women.</p>    <p>The following indexes were the primary sources utilized in compiling this bibliography on women&#x27;s education: (1) Books in Print, (2) Education Index, (3) Guide to Guidance, (4) Psychological Abstracts, (5) Readers&#x27; Guide, and (6) Sociological Abstracts.</p>    <p>Only those references which either dealt directly with the education of women or were obviously related to specific aspects of educating women were included.</p>    <p>Two other limiting factors were: (1) specificity to the United States, and (2) use of the English language.</p>    <p>No attempt was made to evaluate the references critically.</p>    <p>Of all the potentially pertinent references, 284 were finally selected.</p>    <p>These references were divided into two mejor sections (with several subsections): I.</p>    <p>The present subjectmatter groupings are not perfect.</p>    <p>They contain errors of omission as well as commission.</p>    <p>There are most likely incorrect and/or overlapping placements, inappropriate references, unimportant selectons, and failures to include pertinent articles.</p>    <p>A great many but unfortunately not all references were skimmed.</p>    <p>It is planned that the final draft of each biblio-~ graphy will result from a review of every reference, and will, therefore, be annotated. *Gratitude is expressed to Dr.</p>    <p>Remmers, Director, Division of Educational Reference, for his continuing encouragement and support of the project.</p>    <p>Objectives and projects relating. to athe education of women 1...</p>    <p>Education. of women komen ie Bexas - San fe da Texas; Naylor Company, 1957. ; . me Pe as Magarin bpm ’ 2...</p>    <p>American Council on Buicabldse niin caten on the Education of Women.</p>    <p>Another weok at wo n&#x27;s education and othas essays and addresses.</p>    <p>Boston: Simmons College Be Bookstore, 1955. — ~ pe Beneget » Le Te Modern mythology in women&#x27;s education.</p>    <p>Bull., 1950, = tees +), 487-496. - Discussion: 1951 shail : 253-259, an and 1951, Sept.), 553-555- 6.</p>    <p>Blackwell, Gordon W, To educate a women costs more.</p>    <p>News, 1959, XLVIII (No.7). 7 Blake, Re Re Behavior change and the problem of of education, Washington, DeCe.8 Amexican, Council on.</p>    <p>J. éduc.’Sociol., 1958, 32 (Sept. ) 5 28-36. © ‘one oot oe rage 7 Bucks, De S.</p>    <p>Jes 1956, 19 (June); 173-174. —— 12, Buretinal , Lee G.</p>    <p>What about your daughter&#x27;s future?, Towa Farm Sei. e 19605 14 (June), 9-10. ss : chervenik, E.</p>    <p>Review of Educatit Women for a changing world by ~ Kate H.</p>    <p>Personnel &amp; posed at Jey 1955, 33 (Apre); 453+. 14.</p>    <p>Home Econ., 1955, 47 (Oct.), toT-c00. 15.&quot; Clapp, MeAs Realistic Me icebions ‘for women, AAW Jy. 1950, 43 (June), 16.</p>    <p>David; Opal Dy * (Bas) “The education of women. ‘Washington, D.C.</p>    <p>American Council on Education, 1959. 18. 19. 32.4 sae 36. nye M. ‘Je? ¢ fea Dolan, Eleanor.</p>    <p>Educated women: a midcentury evaluation. 1956, 20 (Jan.), 219-228, Educ.</p>    <p>Forum, Dolan, Eleanor, fhe answer Sees sashington, &gt;.</p>    <p>Get By ens Association: Univers ty he oy 2a BoSee Td BHA Beit reetdo . “Drinker,” go a ae education.</p>    <p>Symposium: © Pass pale a est de 8 a BSR Sister Marys , Some ee of the art of teaching women.</p>    <p>Sddeation: re Geokh. &#x27; “Hortilntly, 1953, 180 _ Alls 174, 8), 184-197. a Baucating women for: a iiabe » et: &quot;Gihadi” 19850, 29 - Aug.) 231-292 Habein, Me Problémé in&#x27;vonei&#x27;s eaileatida.</p>    <p>J., (1950.23. (Wars), 117-123. &quot;‘amniee We We Educating women for a chanat works J ‘Home Econ., , 1957, 4g. (oct), 39-622, ., Hawkes , Anna 3 a ‘affairs.</p>    <p>LEN ROOK “Bducating 3 women on shies sehe is “international “Ass. ‘Amer.</p>    <p>Female. curricula eeiueamendl: ‘Review of Educating our ’ Gaughters vy L.</p>    <p>White,” Jee: Sate Reve git,” war 33 (Bept:9),&quot; aB-14.</p>    <p>AAU a2. 1953, 6 Aver), ~175~176. ” _Hottel, Althea K.</p>    <p>How fare American women? “Washington, Dace: 3 il&#x27;on Bauedtiony-1935- a - Bapeetion of women. pole Ase.</p>    <p>American “Coune 1 Bee 36 Uae &amp; Perepectives. for the education of women ade Rec: ’ y Heke Althea Ke How fare American wonen?, AAU cm 1955, 48 (may), 2234223, (abstract) a Yaks oe me ‘ ‘ _ Glance over our ‘eiiitiann: eS eat a a uF «AAU m , 1958, 52 (Gan. ), 95-98 37+ peg: 2 39- ko,” he, 43.</p>    <p>Women in the modern woeees their education and their dilemmas.’ Boston: Little, “Brown &amp;C Co. 5 1953+ : Kroushadie™ 0.</p>    <p>Coll. wilh, 1957, 43 (Mars), 89-9). i oT Te ialoaree, Amanda Re et ‘al.</p>    <p>Lipman, AS ‘Bducational egttiten ~ ‘the remerd aah Je educ. -Sociol., 19595/ 33°(septe); Gbekgyts .+_ Bcd 3 Bosel wuol) eek GST Lloyd«Jones, Esther M.</p>    <p>Lloyd-Jones, Esther, M» Women today ana tied caliddsien: ‘Teach.</p>    <p>Lloyd-Jones, ‘Bather Me The ‘Commission: on “the tadéation of Women since _ 1955.</p>    <p>Lloyd=Jones; Esther Mi” Our dear’ omnia jdaughivere: “AAUW-J. 5° 1957, 50 _(Mar.), 137-140.</p>    <p>Ghear’.’ House House, 1950, 2h Louttit-C.°M; Women: their roles and education.</p>    <p>Time, 1950, ee (Mar+27), 86~87: McBride, Katherine E, What about women&#x27;s education?</p>    <p>AAU fe “ 1958, 51 (Jans), 10210#, 9 Mendenhall, Te Co ; Women!&quot; s education and the educated women. ‘Sche &amp; aps I.</p>    <p>M. &quot;ae the career 2 Be Activ, 1951, 22 iss} 153-155- lasts, Miller, Je Don&#x27;t forget ‘the girls!</p>    <p>New look ‘for the oldfashioned shared ehsation of women.</p>    <p>Educating women for a changing world. vanneapolie: University of Minnesota Press, 1954.” Mueller, Kate H.</p>    <p>Women&#x27;s education! ‘vocational or liberal sh pamomaes Nat.</p>    <p>Jo, 1954, 18 (Oct.), 25-27. . -Mueller, Kate He Women&#x27;s education for what?</p>    <p>Ft: 70. 72. 73. ad i sO. 60e:i: wire “National catherie § Hateationat” ‘Aysociation= Committee ‘gn Coeducdticn” and the Education of Women.</p>    <p>National Catholic ee Porat Reaociation , Proceedings...</p>    <p>AHEMOE BRT Bh -30%, siartin siete Pied Heweomer &gt; ~~ A 3 ee of miter eihication: ‘for ‘American ‘Women. .</p>    <p>Deans &amp; Couns. dey I hee co F3 . . eh oo etl ehtiamaA pbs tac gts ts, Aapianss and ngrent trends.</p>    <p>Noxriss Ly We ‘How to educate .a, NOB Sate Revs: icing 3. (iow.27), Q-10+. pene h i ‘Education of women. ‘Clateiont, caniforniat “Seripps — are either.</p>    <p>Review of : Blasetg fuk bur “daughters ees L.- p, rere JY tw Radcliffe Institute in Thaipeeasht seule Selected BH, 1580 k ny of ‘women! 8. education . .and.,interests.;, Gane 1dge es MAGE 3 Authors qulys, 1962.</p>    <p>Review of Women in the modern world; their SS ana theit dilemmas “by.</p>    <p>Me Komarovsky. ~~ Newsweek,, 1953, 41 Gi (s June 15),, 28s Riesman, D.</p>    <p>Some continuities and discontinuities ins &quot; che’ Wihoricn of »women.</p>    <p>Third John Dewey Memorial Lecture at SC ai College 2 Pal Bennington, Vermont, 1957- ter 4 8 at | } wy _ Riesman, D..</p>    <p>Jy, 19935 32 (Nov-), apni ben ieee, schieer, He As Do high schools neglect the, iris?’ Chang. ‘Tines, 3 * Mot Shelly, Me a ° treideekions for the. education of women — Fy time of © defense.</p>    <p>Ge he our girls getting boys! “education?” “N N.Y., Time&#x27;s” Mage» 1950, (May 1k), 29» stodaara, G. b&gt; oa ‘the’ aaheation of 1 women. &quot;New ‘Yorks’ MacMi‘Llan,&quot; 1950. stoddara,.</p>    <p>Ge De Women! 8 ‘future edueation. ‘3: &quot; “Hone Reon &gt; 1950; 4B (apr. ll 259-262. parvey of the ‘education: of ‘women: planned.</p>    <p>Sch. &amp; Soc. »1953,, 77 (Jan. ) ,77- Tait, y Mader ier | I Beugetien of women for Ske oe York:, UNESCO ? 19 Poh Aad ee . oe “ cute ss riie&lt; 4 ‘Taylor, He,;, Education, for women. ..In.J» EB.</p>    <p>New York: Sheridan House, 1952. .‘, &#x27; 77: &quot;78. 79. oa Timm, Helga.</p>    <p>Abstr, (UNESCO) , 1959,&quot; 33 (Nov7). egitorad aloud «ul Webster, M, 2 We. ust ganpere our girls.</p>    <p>Wou., 1958, 37 (May), T - ehetoO) ¢S coMQl efggobny White; DT ors - ide ie Gua ‘our ion ea age Sheth » Harper ,) 1950, White y Le Te, Ire Peieniing ¥ women in a man! s worlds Athentic, 1950, “285-(Feb.), 52-59. je.</p>    <p>White, L, T., Jr. cama the oonttext of women! 8 | education.</p>    <p>Marr. _# Fam, Living, 49999 =r — \y eaeerr vilgon, Ve H.</p>    <p>Sey fod be 1953; 2 bea 5 - , “ ° * » e on +8 « « ° e . be « es t s ‘ we . ° : yet / ae i&quot; bs 4 i. + - * HS ~ e ‘ ¥ .</p>    <p>Be Factors of womanhood relating to the education of women 83. “8h, £ 91. ou. 96. : Cronheta, ceeaithe He Foeus on “the env for: womens: «Net.</p>    <p>Wom., 1960, 39 (Sune) 13. a a tg ; eth Barclay, Dorothy. &quot; Cosh: at ‘setool, girls. ati otis &amp; Mex x.</p>    <p>Times Meg. ) 1959; i iad Fee iy Bringing up “mother. enn AE 1953, gy hae - i 58.&quot; Buck’: D.</p>    <p>Pas Girl&#x27;s Nation; legislative training. for tomorrow&#x27;s women.</p>    <p>Wom., 1950, 29 (Oct.), 298-300; -/:.5 Chambliss ,&#x27; Ri’ Women too are persons. .</p>    <p>Bull., ae 3t (sept. ds sapien a vee vee &lt;4 eek? _Deans &amp; Couns. 3 1956, 49 (June), ST: de Luget, Je Contribatiae “of | towel! ‘economics ROE ‘to ‘the adattion of women in the world todays é &gt; ‘ Home Econ. , 1998, = (oct. )» 625~628, * ee) be ts Dowie, Elizabeth, &amp; ‘Kaye. ? “carol.</p>    <p>Role expectations of young women regarding marriage and @ career.</p>    <p>Discussion: 97, 161, 273, 673-675} 98, (May 11), (June 1), (Sept.28), (Hov.2).</p>    <p>AAUW J., 1959, 52 (Mar.), 147-150. - Hartley, Ruth E., &amp; Klein, A.</p>    <p>Washington, D.C.: Americn Council on Education, 1952.</p>    <p>Rec., 1961, (April), 404414, 100. 101. 102.&quot; 103. 104, 106. 107. 108. 109. 110. lle. 113. 114. 115. 116. 117. 118. 119.</p>    <p>Hottel, Althea’H.’ Changing&#x27;status of women, Nat: Ass.</p>    <p>Psychological problemsof women in different socieal.roles.....Bducs Recs,;1955,. 36 (Oct) 9 325=335+ r Jones)’ Se: Vs.</p>    <p>Report on the National conference. of women inthe defense decade. “ASS.</p>    <p>Bds State Univer. &amp; Allied Insts Proc.,, 1951, 39-46.</p>    <p>Women in America, Bevier,Lecture Series, -University of Illinois,.1950. . .</p>    <p>Kluckholm,, Florence Re American women and American values.</p>    <p>New York: Harper, 1953, Pp. 175-199. _Komarovsky, Mirra, » Punctional analyses, of sex roles.</p>    <p>Yaris basnivtoad to’ sagoe a of m Landis ‘ J.T. astitaaes and polavies i eetiad SOM a 2te among high school students.</p>    <p>Oceupations, 1952, 30(Apr.), siien Montreuil-Straus, Germaine.</p>    <p>The psychosomatic aspect of housework: report from France.</p>    <p>Me Adequacy of women&#x27;s expectations for adult roles.</p>    <p>The new woman. jp {Catholic women ) « Time, 1957, 69 (Apr.29) 5 NG. a 4. mel i a my. oes eth ear “ia gyd Bae Ta Gano an engage 3 OE 121.</p>    <p>Laer De Lad te pirere : 12h, Walters, J.;°e@ Ojeminn, RO?</p>    <p>HSA ‘study’ ‘ef adolescent attitudes! . 6: concerning the role of women.</p>    <p>WOE ‘BOCe ‘Psychol.&#x27;, 1952, 333 ys 101-110. ida 125%&quot; : (Meliin,” Pe Cultural, pak th boyy sex ee &amp; piewee Study... ‘E2196.</p>    <p>Weiss) R. oi, ‘&amp; Samelsdn, ‘Nancy Social‘roles of American’-voren:. their contribution to a sense of usefulness ‘and amportancte.</p>    <p>Ann ok tae nm ee : (parvey, Research ¢ fig age hon egal of a.” ee af salyhg jus sua odor 127., wider, Ae .</p>    <p>Be e008, | evect madd. ane J 1958, 2 (oct), 15-17. a UL. 128.</p>    <p>Young ‘een 8 Christian auscetdibelhs Are you satisfied to be 2 ba onl *) am eodays World?’ : New York: “Author, 1957) ~ yeebohl TEL 7 be wa * a? ret al t : ’ ‘ . * wale ‘ * eo. ‘ . - name 4% . ‘ ® 4 § . “ a4 whe wae 4 f + a af? or * \ 4 DLs ; * wa - cr 4 si tbe %: * ? % i Be e al a 4 . eu crm alee ms i : ™&quot; ‘ +X Fy A fa. 3 ep y ‘ ay 2 ed gE 4 et De Pie ; “y * €\* +f * 5 ‘ vy ‘ a es a, ae nt # 5 p pe *% Sey iin * . 4 5 8t% Py ca 3 es Me ~ ELS 4 Fi ry a + &amp; 3 +e IG as Es ‘ % é ‘ 4} \ 8 ei ett ae fi : no voile. &gt; * 3 G &#x27;- ae af i a} ae has ¢, Fi aid mS 4 i sd ee a hikers is caer ¥ Lye Pe é +e. 5 : bs fare + - Ps .</p>    <p>Riven meas oo &quot; ms ? % ably ae 2 i , 3 Pp be § + 2 fT f Sx a eee — e , a 5 C.</p>    <p>Factors of womanpower relating to the education of women.</p>    <p>S : 129. 130. i131. 133, stacl ve 136, 137. 138. 10. 11. 12, 143. ihe 145. 1h6, aie 3 a M.</p>    <p>Why do. bright ae pas ie stiff courses? . chiuss Forum, 1961, 25(Jan.), Tee el MBINOTq qidewol!</p>    <p>Times huibing, Me % our neeeade Waate” of ‘ples’ is &quot;\wonens with introductory “comments. itty 19614 50 (Jan.13), Eanble. oy Church, Ruth Ey ohanpower today and toneuaaie Amer.</p>    <p>F. ‘Bducational pokp ‘of high ptr girls, Nets Ass. ‘Deans Wom.</p>    <p>Bite Drews, ‘ “Bs Me Big waate of brain power: our gifted, girls.</p>    <p>Quins, ‘Irma He (Ed. ) &quot; Potentioliueen of women in the middle years.</p>    <p>East Lansing, Michigan: Michigan State University Press ; ress, 1950s Heist, P.</p>    <p>Implications from recent research on college students.</p>    <p>Intellectual functioning in high school girls and college women.</p>    <p>Motto, Je J» Study of educational goals and academic performance.</p>    <p>Adult Educ., 1960, 10 (No.4, Summer), 234237, National Manpower Council.</p>    <p>Pryon; Ruth W.- Investment in &gt; sinabte sense je A fellowship program of the AAU, 1 ; hingt&lt; American Sy getes rye eaves ee begin 1957. : re i: 149. ‘alien, Pe, &amp; Horton, C.</p>    <p>Some demographic’ usa eh ek - outstanding Negro Womens a Tegre ‘0 ‘Educ. , 1954, 23» WO6-M20. akg se 150.</p>    <p>Verhoff, J., Wilcox, Sie, &amp; ‘Atkinson, Jo’ We sistitevemitit: aiave in igh sehool, and sable?</p>    <p>Bae | women. &gt; 5 ebnorm. oy ‘Esychors 19535 ofthe Posy ogee A ‘ Poy: What&#x27;s wrong with anbition?</p>    <p>Weitz, H.,&amp; Colner, Re Me Relationship Meunaee the Jaceak Tana, goals ~~ land the academic performance of women; a: Noafiruatiod, ‘é Educ psychol.</p>    <p>Measmt., 1959, 19 (No.3, Aut), :373-380« OOCE ¢ RSM 1536 Wolfl¢; P&#x27;s ‘Deel. “America&#x27;s resources of specialized talent. .A report’ of the Commission on Human Resources and- Ravanced ats New York: , eerste on Human a end.</p>    <p>Adeoneet. gerne 19h ate re : Ps ss ned. oa ’ 4 zh . c 2 $0, 3 ste s? ’ ¢ el ~ ?— ”. ’ i : 2s pias Bio i 4 = sel = f : ie 3 gicat se OR ’ » ‘ aa. ed ad &#x27; 4 “ 2 ¢ . &amp; s° : II.</p>    <p>The Education of ‘lomen - Higher Education Ate sneral. college plans and. curricula relating to the higher éducation of ‘women 154s: 156.</p>    <p>L5Te 158. 159.-. 16%. 162; a 164; 165. 166. 167. 169. 170.</p>    <p>Role of the.women&#x27;s colleges in the next ten years. , “Ass.</p>    <p>Amers Coll, Bull., 1958, 44 (Mar.), 7&amp;-88 -College education is dowry of modern.American miss.</p>    <p>Conference..on constructive forces in education; in celebration of the 75th Anniversary of Wellesley College, October 16-18, 1949.</p>    <p>Wellesley, Mass.: Wellesley College News, 1950. ** — &#x27; Council for Financial Aid to Education, Inc.</p>    <p>Jo, 1954, 24 (Max.), 82-89. . : &#x27; Daw, B. i&quot; Building vital curricula ‘for today&#x27;s college women.</p>    <p>J., 1954, 2 (May), 555-558. = ‘Dean MeIntosh proves point: women&#x27;s colleges are of ‘agé.</p>    <p>Recs, (1958, 39°246-252. - Duddley, L., &amp; Cameron, M- E.</p>    <p>Do we need a new curriculum for women in higher education?</p>    <p>Women&#x27;s. college in the pursuit of excellence, Liberal Bac. , 1959, 45 (Mar-), ‘54-58.</p>    <p>The role of higher education in contributing to family life today.</p>    <p>Merrill-Palmer Quart., 1956, 2, 55-65. &#x27; Hartshorn, E.</p>    <p>Some samples of freedoms for women. students in higher education.</p>    <p>AAW J., 1958, 51 (May), 203-206. ee 171. a. 173. 174. 175. 176. &quot;178.</p>    <p>LT Qex 180. 181. 182. 183- ‘ .18h.. 185. 186. 187. 188. 189.</p>    <p>Times Mag., .1950,. (Feb.5), 10+. “Discussion; N.Y.</p>    <p>Women&#x27;s colleges and our changing moral’ standards. ‘ Coll. &amp; Waieer- + 1950, 25 (Jan.), 269-291. ‘ ‘Mueller, Kate He Professional as an ‘andiviaual.</p>    <p>J. 1960, 23 (June), 165+175. - Muller, Leo o &amp; Muller, Ouida Gean. ‘Colle ge for for coeds. *. ew York: Pitman Publishing Corporation, 1580. 0 &quot;Toole » De Jones?</p>    <p>Some reasons “why - business should support women&#x27;s colleges.</p>    <p>Banking, 1956, 48 fase. 59. ‘Radelifte Tnstithite for Independent Study.</p>    <p>Wasted women. ‘sre ‘ gcliol’. , 1960, 77 (Dec.7), Te | } Roberts,Eunice.</p>    <p>College. odusdtton is, for women, too! ae Home Econ.,... 1958, 50 (July), 436 eee 2 SBS LY Be wR en (wee ot Taylor, H.</p>    <p>Times Mage, 1958, . ead, 0.° Higher eduestion as 8 2 pibiie trust.</p>    <p>Vital Speeches, 1951; 17 (June) » 493-496. &#x27; Thompson, Dorothy.</p>    <p>Oh, ‘piofessor? &#x27; Ladies’ Home ‘Jej 1958; D (sane), 1.</p>    <p>Warren, Constance. .AAUW branches look at ee education.</p>    <p>Mademoiselle, 1958,- “LG: ‘(Jan.), 80-84 « ily (ey Women and — eduomtdnti.</p>    <p>AAW aes 1951, 51 (ost ‘y; ‘The Be specific eetlage programs and and evaluations relating to ihe. higher education of women 190. “Knsticen women at work: Business finds that they&quot; re people too.&quot; Newsweek, 1956, AT (Febs27), 76-77. 191.</p>    <p>Beckbay, De Ke Problems ny measuring the. effectiveness of professional education.</p>    <p>Educ. psychol. measmt., 1950, 10, 57-66. 192. snthnkg Sister Margaret Ann...</p>    <p>Catholic college for women and education ; » for, leadership.</p>    <p>Sarah Lawreneds Harpers ; 1958, 217 (Nov. ), diy. 195.</p>    <p>Collegiate education for marriage and femily living.</p>    <p>In Report of the Presidént to the Board of Directors for the year 1953-4.</p>    <p>Bryn Mawr, Pae: The College, 1954, (Dec.), 13-22. 197.</p>    <p>Chase, ‘Ee B. stuay of undergraduate records of graduates from Hunter College who later earned doctorates.</p>    <p>A study of the eraibation of: their college , education by the graduates of Clark Women&#x27;s College, Clark ers In Clark University Abstracts of Dissertations, ; 1950, 22, 129-131. 199.</p>    <p>Women with a college educationthe lives islew lead. _/ N.Y.</p>    <p>Sch &amp; Soce,. 1960, 88 (Mar. 26) , 163-164. 202. —— A.</p>    <p>R. “Student personnel ‘practices in junior colleges for women.</p>    <p>Salts Jey 1954, 25, hih5. 205 e ~ 206. 209+ , 210. 212. 213. ar 218.&quot; 219. 7 &quot;952,- (Sept) , 61s6525° espace i, Eells, W..C. .</p>    <p>Women, inthe | universifies pf. _ Berni ny actor Bmuee. .. weer: .Fehlmann, Hazel A.</p>    <p>A survey of. the: Medical Siopvtanial cantos offeredin the _junior, cola of, the.</p>    <p>Pav addi s Jeanne De Personal. ‘and professional ‘activities: of 19351952 graduates of Iowa.</p>    <p>State College.” annie MA thesis, Iowa State Colleges 1955».° 9... 3 aac Harvard®&amp; Radcliffe cooperate in sane program in business . administration for womens. ind.</p>    <p>Wom., 1956, 35 (Jan.), ee. : Kelley, We Fs- Observations on some Catholic colleges for womens — “Cath. educ.</p>    <p>Ste Charles, Mo.: Women&#x27;s Section, National Votabional Guidance &#x27; Asséciation, 1959. ug _ Lyle, Mary S.</p>    <p>Iowa State ae , Division . of Home Beppomics, (Dec.) 5. 1955+ she p, Lyle, Mary S.</p>    <p>Graduates reflect.on their eaueaticds ‘Se Home Bookie» 1997) 493 (1) (Jen.), 9n12. ; Marie, . opiates Hildegarde.. &quot; Objectives of ‘magnee education of women in the light of Papal teaching.</p>    <p>University women&#x27;s épinions.‘on’ their education. (Proceedings) iiirortaey of Illinois, 1951.</p>    <p>Mecord, De Radcliffe y and education for women. - Je ‘Mag. ; 1954, (Dec.5), 26-27* « Ee eet Mosbacher , W.</p>    <p>Be Women -— ‘of cooperative workstudy programs on. ‘the gollege level.</p>    <p>J., -1957; 32: 508-511. : Neal, Ruth. ee the offcampus woman epdiendy Personnel &amp; Rh 2S Je Ee: Nero woman looks at her tdotbaas wasemttet.</p>    <p>New York: Teachers College, Columbia University, 1956.</p>    <p>Readers Digest, 1951, 59 (Oct.), 109112. be ik a 221.</p>    <p>Panel. on cooperative study for Catholic womens colleges.</p>    <p>Radcliffe Committee on Graduate Education, for Women.</p>    <p>The Radcliffe Ph.D. gar ties} » Mass: Harvard Univer. .</p>    <p>Educ. , 1950, 22). 191k . ; aca ny} eter 22h, Shosbeck, R.</p>    <p>Five theiealid women college aduates re pet Washington, vomi ove DeCes, Bnai, Brith Vocational Service Bureau, 225.</p>    <p>Fouryear college curriculum in’ general’ education.</p>    <p>Education, 19505, BD). (Dec..) », 2h5~2h9. 226. a 65- Junior _— for yor daughter?</p>    <p>Training for citizenship at Mills. falinge: Ladies Home Je) 1950, - St (June).,, 23+; is einen ar hace 228.</p>    <p>Vassar: the kind of pe “a wn Bsns Week, 1956, (May 26), 229.</p>    <p>J» Home Econ. , &lt;aer 48; Wlbh17. 232. | ‘Women&#x27;: s progress; ‘college women 0 years: after, ‘Decup ations, &quot;1950, 29, 227. — 233.</p>    <p>Goals, : ss’ . aha 20s ead or gas’ relati bing, to to. the niigher “gducatioi of women. 23h. 236. 237- 238. 239+ 2ho. ahi. 243. 2h6. : eQhT. hs. 2ho. 250. aodereeas Mary: - “A descriptive study. ‘of ‘Values’ aaa: daterests ‘oft four groups of graduate women ‘at the: University. of: ‘Minnisota.</p>    <p>Dissertation Abstr, 1952) 12, epee : “phys we ‘something more of the depths! : Student: values at ‘Woman&#x27; a Coble. sabre A of North — ‘Relig Baus Baue.} a0, KO OF gPs peaty, Jeanthe Keller. “We pweat out our’ Sainpiis b imrttage.</p>    <p>Post, 11956, (Apr.1+), 58-59... jokfos ‘ais Boe SS Berry, Jane.</p>    <p>Life plans’ of solttege women&#x27;s te asi ne Ho J+ 990% 28,. ‘716-80, Sa Binger, C.</p>    <p>The ee on neces er today. “Bilsntle, 1961, (20%, Hombre ee, af) 3h. 28 ‘ Broiy, David S. pevaaiiaialadl factors ertecttnit soeieataey Beate and _.</p>    <p>Ke Responsibilities of women in higher ‘education. _Nat.,.Ass.: Deans Wom.</p>    <p>Changing college girls.” “Newsweek, 1960, 56, ‘(6ét. 10) 102: NR a He T. ? &amp; Swihart, Me Me &#x27; Postgraduation role: Preferences of senior women in college.</p>    <p>Living, 1956, 18 18, 52-57- codices sek smaller families, eS.</p>    <p>Factors influencing. women &quot;s. dacteions about higher s education.</p>    <p>Sex role and selfconcept: 4 odeuny: of the feminine sex role as perceived by eightyfive college women for themselves, their ideal woman, the average woman and men&#x27;s ideal woman.</p>    <p>AAU J.; 1955, 48, (Mar.) » 161-167. — Hopwood, Kathryn. ee ee of university college women.</p>    <p>J., 1954, 32, 464-69. 251. 252. 253+ 25h, 256. 257. 258. 260. 261. 262. 263. 264, 267.</p>    <p>Bs Interest and personality correlates ofcareeretlotivated and homemakingemotivated PED CEE, Women, ‘ de counsel.</p>    <p>Psychol. 5. 1258, 3s Whehg. * Kiell, N., &amp; Friedman, B.</p>    <p>Culture lag and nousewa tessa Re the -roll of the married female SOLER, etecwees JZ + educ.</p>    <p>Culture a. and sects Sageagnsne the role of the married female soilege graduate.</p>    <p>Living. sie 20, 301. iadatnied Seen POTS Knaak, - ‘Nancy Katherine.</p>    <p>A’ study of the, characteristics of academically successful and unsuccessful freshmen women who entered NorthwesternUniversity.in the fall of 1954.</p>    <p>Atlantic 1959, 204 (Nov.), 56-60.. i a alas std Lee, A.</p>    <p>Wom Lewis, Ne» D- College women and their proper spheres.</p>    <p>College values on the balance scales: AAUW&#x27;s ‘questionnaire , Survey.</p>    <p>Lind, My College women in A current crisis through military service.</p>    <p>Mey &quot;&amp; Markabesey,: ‘Ne Le (Eds.) Attitudes ‘of women én higher education.</p>    <p>Admin. &amp; Super. , 1951, 3t)- 385-395- Mallay, Js...</p>    <p>An leiedkr potilieer scholastic overand underachievement mee me college freshmen.</p>    <p>Marksberry, Ms Le Attitudes of sobbege women ‘toward’ selected roles in life.</p>    <p>Toward mutual responsibility. de. 800% “Issues ’ 1950, 6 (3), Wicca Mitchell, timers De Interest ‘profiles of university women.</p>    <p>Mueller, Ke He “Sex differences ‘in campus regulations: Personnel &amp; Guid.</p>    <p>Ses. 395% 32 po ae Muller , Leo Ce (Ba) | New rizons: for college. woinen. ~ Washington, D.C.</p>    <p>Public Affairs Press, 1 Murphy, Le By &amp; Reushenbush, E.“(Eds.) ° Achievement in the college years.</p>    <p>New York: Harper, 1960. ee a A 268. 269. 270.&quot; 272. ors Z e7Th. 275+ 276 e 277+ 278.&quot; 279: 280., 281. 282, 26h.</p>    <p>College women in the current crisis through individual ‘services: :BBB&gt; ear cole dew re WW Be ke pai obigiuas™ ?</p>    <p>Alice’ _ e ‘i : four years of fo experieiiee’ ® “procs: Towa Acad. ae j ‘Ries: ‘gy.</p>    <p>Ye College students” nterest in education s fob teaay alata: Je Home ecwsild 1960, 22, 763.</p>    <p>Ske : : 8 through community” sick 135 i ae ; Raley, Se B : ““Celitege wouien. @ Lip age 2 err “ service.</p>    <p>Deane. £ Coupes se, 1957, 2h» {oct dh Ein snes , ce vibes obeps Seve Pane Sanford, i. , “Frecata. rie a Webster, ms &amp; eS De ersonality peter yn during the = years.</p>    <p>Pe The eine and goals of lower divisior* iomen in Teachers college and. the. college of Business.</p>    <p>Administration at . the University of Hawaii as measured by the Vocational Sentence Completion Blank.</p>    <p>Unpublished :MA thesis; ‘University of Hawaii, 1953. &#x27; Smith,’ Joyee - ‘ Multipleenoicée ‘Rorschach résponsés - 6f over and’ under achievers among college women. — ‘MA. thesis, _ Catholic Molverstys 1991+ ad ee ae sien Smith, Mary Elinor. ‘Brobibiie | of “Prestmen: college. womén in felation ..to levels..of achievement. _ alereR aes MA chests ?</p>    <p>Catholic University, 1951. oes | — ae. gio, . my De Solomon, Adrian, .</p>    <p>Identification, ‘a1 etalnatation, apd ‘extension of. self; a study of perceptions’ of*self, mother, ‘and’ on al ina” samplé for college women: “ “Dissertation Abstr. , 1955, 15,1121.</p>    <p>H. “Motivation for “college” in high school, — mM 108 Sch, Revs, 1959, 67,&quot; 3205324. i Thomas, J+.Le, College doesn&#x27;t breed mee eS toertcan, 1952, 88, 121-123.</p>    <p>Ep Role, clarification pen the contemporary eo ae 2 : etacated: women. we Home Econ, 1953, 455: 567-510» we von.</p>    <p>Mering, Fe He, Professional &amp; SS ae women 8s ethers.</p>    <p>Psychol. , 1955), ae. (1), ’ Lae + tg White, Le, Jre, Do womens ! colleges. turn, out spinsters?</p>    <p>P... ae women who e ress g fuente, New York: Teacher&#x27;s College’, Columb iversity,-19!</p>    <p>Ee: Leasing woos ZEROLEOR », MarBer ace ( The me ollege ea Looks Pee. .</p>    <p>New York: Harpers; 1956s--&quot;~&quot; * ae TS ie we SOs g th</p>
-    
+
+    <!-- Table of contents -->
+    <nav class="toc" id="toc">
+        <h3>Contents</h3>
+        <div id="tocContent"></div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container">
+        <h1 id="title">The Second Sex and the Third Force</h1>
+        <div class="author">by Dr. Elizabeth M. Drews</div>
+        
+        <div class="reading-info">
+            <span>📖 <span id="readingTime">15 min read</span></span>
+            <span>📝 Academic Essay</span>
+            <span>📅 Historical Document</span>
+        </div>
+        
+        <div class="note">
+            This paper is a rough, rough draft and will be revised extensively. 
+            Any suggestions you have for additions, subtractions, or modifications will be appreciated.
+        </div>
+        
+        <div class="content" id="content">
+            <p>Drews &quot;Includes Neo-Freudians, Post-Freudians, the Organismic and Gestalt schools, Lewinians, Phenomenologists, the Self, Growth and Human- istic schools, etc., etc., etc.</p>
+            <p>THE SECOND SEX AND THE THIRD FORCE Little girls are much less apt to be disturbed emotionally than are little boys who are their agemates.</p>
+            <p>Child guidance clinics report seeing four boys to every girl.</p>
+            <p>Far fewer girls have speech problems and reading problems, fewer drop out of school before graduation, and fewer become delinquent--all in contrast to male counterparts of the same age.</p>
+            <p>These girls seem to come near to fitting definitions of creative productivity and wellfunctioning mental health--they are effective person- alities.</p>
+            <p>They combine, as do creative artists and scientists at the adult level, the feminine qualities of humane concern, aesthetic sensibility and good communication skills with the masculine traits of efficiency, theoretical orientation, intel- lectual aggressiveness, and egostrength.</p>
+            <p>Studies of high school students~ and college students show girls rating higher than boys on qualities and attitudes related to creativity and mental health.</p>
+            <p>Girls not only have creative attitudes but are also productive and contributive mem- bers of the school society.</p>
+            <p>They consistently get better grades than boys, both in high school and college, they hold more of- fices, and participate in more activities.</p>
+            <p>There are occasional complaints about the girls being less spirited and more self critical than the boys, but in general they produce and do it well and happily.</p>
+            <p>In contrast to the positive mental health and creative ‘attitudes of the school girls, adult women? are said to be more neurotic than adult men. * They often retreat into private and family worlds and no longer receive the rich stimulation of the outer worids--the technological, aesthetic, natural, and human.</p>
+            <p>They do not continue to enhance their 01d knowledges and to re- arrange what they know to meet the emerging requirements of an everchanging world.</p>
+            <p>To put it simply, such women can scarcely carry on interesting conversations with their husbands.</p>
+            <p>The problem is--if the truth were known--that they did not find real commitments, genuine interests, true foci for lifetime learning in school.</p>
+            <p>As students they did well what was expected and had their basic needs met--they were accepted, recognized, and suc- cessful.</p>
+            <p>However, they did not become selfactualizing and autonomous” and therefore were unable to work out a meaningful, productive life in relation to both the family and the larger world.</p>
+            <p>Outside reinforcements, pleasing others (the teacher) remained necessary for them for they had not gone beyond the need motivation level.</p>
+            <p>After the young women supplants being a student with being a homemaker, the expectancies as to tasks and interests are no longer intellectually challenging and so- ciety does not apparently, except in stereotypic terms, value the tasks required of the mother and the housewife.</p>
+            <p>The woman who does not already have a commitment to an intellectual venture, and ego strength as well, may feel confined by the restrictive role that society prescribes.</p>
+            <p>In such a situation, some women regress to an intellectually inactive state and others realize something is wrong but find few patterns and little encourage- ment for changing this state of affairs.°© The fact that the psychological and intellectual needs of adult women seemingly are not being met is accompanied by societal problems of a grave and pressing nature.</p>
+            <p>There seems to be little doubt where everyone stands on this and with an everincreasing humane- ness and kindheartedness we are willing to say that all should survive. !</p>
+            <p>Beyond survival (which might turn out to be a sub- sistencelevel affair--I understand they are raising algae in sewage but that people are having trouble digesting the chloro- phyl.) we can turn to other societal concerns--for example, im- proving the human condition.</p>
+            <p>The human condition can be described in many dimensions, all of which show deficiencies in development.</p>
+            <p>It is readily apparent that physical man in the world at large is still a hun- gry, ill and generally unfortunate creature.</p>
+            <p>The average man in India lives only half as long as the average Englishmen.</p>
+            <p>The South American lives to be 35--North Americans live to be 70, and as C.</p>
+            <p>Wright Mills /@ said, perhaps this is why we are re- sented so much.</p>
+            <p>The thinking man (which we assume an adequate world citizen must be) remains a Hellenistic ideal still to be realized.</p>
+            <p>Over half of the adults in the world cannot read and write and more than half of the children are not in school.</p>
+            <p>World problems are approached, and sometimes even equalled, in poignancy and urgency by the problems that have developed or that we have always had with us in the United States.</p>
+            <p>Health and mental health in the positive sense are just being defined and the old problems--from pestilence to dementia--are by no means solved.</p>
+            <p>The shortage of nurses, the refusal of many hos- pitals to accept Negroes, the prevalence of disease among Amer- ican Indians, and the absence of any concern for the health of migrant workers--all sully our dreams of American citizens as men of dignity.</p>
+            <p>Nor have educational needs, despite our claims to liter- acy, been met adequately.</p>
+            <p>Many of our schools--we can point a finger at the south and elsewhere-~are a national disgrace.</p>
+            <p>Schools can and do create environmental deprivation which, in turn, produces perceptual defect® and an inadequacy in learning.</p>
+            <p>We have done too little to provide meaningful materials and ex- citing activities for the onethird who come to school not ready to learn to read;~ and we have similarly failed those who never learned quite well enough--who started out behind and lost ground every year thereafter--the slow learners, the disabled readers, the potential dropouts, and the predelinquents.</p>
+            <p>We know very little about how young children learn and still less about adolescent learning (although we have documented their dating and delinquency patterns).</p>
+            <p>The research has not been done and the theory has too often ignored and too rarely focussed upon the actual teaching situation.</p>
+            <p>Fortunately there are the beginnings of some scholarly investigation and welldesigned experimentation in the schools, but there is also a crucial need for inventive programs and innovative teachers.</p>
+            <p>What was right for grandpa is not right for the child of today and tomorrow, and I have never been fully convinced that it was right for grandpa.</p>
+            <p>These are only suggestions of the human needs our society faces.</p>
+            <p>I have spelled out educational needs in greater detail since my own research is in this area and I am more acutely aware of deficiencies.</p>
+            <p>However, mental health problems should be men- tioned--such as the fact that 4 out of 5 counties have mental health services and that it is estimated that 7-12 per cent of American school children are emotionally disturbed.</p>
+            <p>This paper, presenting as it does an overview of the individual woman&#x27;s and the collective society&#x27;s problems, would be patently inadequate if it did not allude to the societal prob- lems of women who work.</p>
+            <p>After all, a recognition of these prob- lems resulted in the establishment of the Commission on the Status of Women of which this committee on education is a part.</p>
+            <p>The economic and social inequalities that women face are well known by at least the members and affiliates of the commission.</p>
+            <p>And surely we would also agree that there are too many Americans who have unmet needs and too many people in the world who suffer from excessive want and privation. (Since we are not yet communi- cating with other planets we do not know whether or not this is par for worlds at large.) It takes only a superficial grasp of the situation to realize that the attitudes and talents women have--such as aesthetic sensitivities, communication skills, and concern for human beings--could go far in meeting some of these problems.</p>
+            <p>Of course, recognizing problems and even know- ing an answer is not enough to insure action (knowing the con- sequences, i.e., throat cancer, doesn&#x27;t keep us from smoking).</p>
+            <p>The obvious use of such able and relatively unemployed women on real and urgent problems may be difficuit due to known prej- udices and unexplored intolerances.</p>
+            <p>Yet somehow we must bring the woman with her needs and the society with its needs into a complementary and mutually enhancing relationship.</p>
+            <p>These concerns with human problems are relatively recent.</p>
+            <p>The mental health movement stems from Clifford Beers&#x27; pioneer work in the early 1900&#x27;s, and programs of special education and intensive work with the physically afflicted have largely devel- oped since World War II.</p>
+            <p>Snow!+ has commented, society is at last showing a trend toward human kindness.</p>
+            <p>A group of adolescents recently discussed this point and one of the brash- est but most idealistic said spontaneously, &quot;It&#x27;s cool to care.&quot; And the psychologist Shoben?? has said with obvious relief, &quot;At last it&#x27;s respectable to be responsible.&quot; Not only can we document such observations but we also can cite two parallel trends in theory that seem to bode well for man&#x27;s future development.</p>
+            <p>There is a developing literature on what is called the positive evolution of society as well as much that has been written on the positive evolution of man.</p>
+            <p>Surely as humane concerns become increasingly respectable and positive development (not just curing of illness and remedying privation) is more generally valued and fostered, women will be encouraged to work in this direction.</p>
+            <p>Our hope is that they can become fully developed (with the peripheral benefit of being personally pleased with the product) as well as socially contrib- utive.</p>
+            <p>A large number of disciplines are studying and develop- ing portrayals of the evolved individual.</p>
+            <p>He is variously de- scribed in psychological terms as mature, selfactualized, fully- functioning, and productive.??</p>
+            <p>A more socialpsychological view, embracing such concepts as humaneness, &quot;universal man,&quot; and emerg- ing mind, has been expressed by anthropologists and biologists.?4 Historians and philosophers speak of heroes and philosopherkings.?°?</p>
+            <p>Beyond the philosophical and theoretical outlines--the sketchedin model of what man may be, should be, and occasionally has been--there are at present a number of studies (completed or in process) of creativeeffective individuals.+® These in- dividuals, as we have come to know them through the descriptions, continue to grow and change and develop--to enhance what they are, to become more nearly what they might be.</p>
+            <p>They are described as planful and optimistic and outwardly concerned.</p>
+            <p>Many of them have extended self beyond the microcosm of their own concerns into the macrocosm of societal need.</p>
+            <p>In fact, the most mature focus primarily on problems outside of themselves.</p>
+            <p>They have social conscience, feel for and with mankind, and want to con- tribute to the public welfare. | =a LR ST Ci(‘“‘ié‘“(i‘“(‘ CCT The idealized society and the idealized image of the individual bear striking similarities, especially in such an area as humane concern and human development.</p>
+            <p>The good society+! as it has been conceptualized would seem to foster the develop- ment not only of thoughtful and farseeing individuals but also to allow far more people to develop their potentialities.</p>
+            <p>It is 18 that certain vealues--kindness and tenderness as my assumption well as creative innovation (growth)--are better than other val- ues--hostility and destruction and lack of growth (stagnation or regression).</p>
+            <p>It is now felt that qualities of the good society and of the effective and humane individual’? can be abstracted and that some of the antecedents (early stages of growth) of this effec- 20 A question tive adulthood can be scientifically documented. arises as to whether these qualities, denoted as creative and mentally healthy in the adult, can be found in children or ado- lescents.</p>
+            <p>The companion question is: if creative qualities can be found in certain of our youth, do they give us an adequate basis for predicting creative and effective behavior in adult- hood?</p>
+            <p>From exploratory studies recently done it is our belief that these qualities are apparent in the young adolescent, and we assume from our studies of the biographies and case histories of creative adults that the early emergence of such qualities is one of the best indicators we have of creativeeffective adult development.</p>
+            <p>We have yet to learn how to foster and facilitate the growth of these qualities; however, several theories have been developed and a good deal of educational experimentation is being directed toward this end.</p>
+            <p>Psychological research (particularly in certain studies of learning as in learning to read) has shown that young people who are positively disposed will respond better than those who are negatively disposed toward the proffered development.</p>
+            <p>For example, good readers--students who like to read--characteris- tically improve more when given special reading help than do poor readers--students who do not like to read (although the poor readers might seem to have more room for development).</p>
+            <p>In our research we have been able to identify three rather distinct value systems or achievement drives in bright ‘young people. we have tentatively called these types creative intellectuals, studious, and social leaders and have (through the study of their behavior and attitudes by observations, inter- views, questionnaires, and attitude, personality and value scales) found certain rather clearly marked differences that indicate that the creative intellectuals are developing quite differently than the other groups of adolescents.</p>
+            <p>From the evidence that we have so far, we believe this to be in the direction that has been described as selfactualizing.</p>
+            <p>These three adolescent growth patterns*+ can be placed on a continuum to show differences more clearly.</p>
+            <p>The creative intellectual is placed on the end that seems to us to be more predictive of development of a humanistic and idealistic system of values, the studious falls somewhere near the center and OO RTT rir tr 7 277i rod ee Pe Smee ESSE ease cee tienen REE characteristically tries to maintain traditional values, and the social leader falls at the other end of the scale and favors hedonistic values.</p>
+            <p>Our preliminary research on these types has consisted of personality, attitude, and value assessment of almost 1000 adolescents of superior ability and a comparison group. of several hundred average students.</p>
+            <p>Observations and individual interviews have supplemented this information.</p>
+            <p>Of these students about 20 per cent of the intellectually superior (almost equally divided between boys and girls) and 5 to 10 per cent of the average may be said to have a creativeintellectual orientation.</p>
+            <p>The creative intellectuals are concerned about the enhance- ment and improvement of the state of man and his affairs.</p>
+            <p>They believe in growth, pianned change, creative innovation, and are generally optimistic. uihey not only feel that individual man and social institutions can be improved, but many of them also seem willing to work on the project.</p>
+            <p>In contrast the studious (60 per cent of our superior students, with an overbalance of girls) seem to be mainly concerned with following the dictates of parents and teachers.</p>
+            <p>They do not rebel or ask for progress or change but instead want to conserve or preserve. they are fine, upright citizens--getting exceptionally good school grades and the best citizenship ratings from their teachers--and have both Protestant athic (in wax veber&#x27;s terms) and &quot;conventional wisdom&quot; (as John Galbraith has described it).</p>
+            <p>The social leaders march to quite a different drumuer.</p>
+            <p>They espouse what is sometimes called the dominant American value be) system--hedonism and materialism.</p>
+            <p>This group (20 per cent of the superior adolescents with an overbalance of boys) is interested in personal gain (affluence, power) and do not seem to worry about the destruction or exploitation that might be necessary to accomplish this. hey express disbelief in man&#x27;s ability to im- prove, and feel that institutions need not change.</p>
+            <p>They will probably be church members if such actions prove to be socially advantageous, but they have little belief in or tolerance for religious and philosophical thought or for formulations that 22 .</p>
+            <p>They see man as a conniver and an depict man as basically good. exploiter and feel that they must master the game. thus with tendencies toward destructionexploitation (often in the nane of pleasure and personal profit) on one end of the continuum and a belief in enhancemwentim,rovement on the other end, the issue seems clear.</p>
+            <p>These creative intellectuals are the young people who we predict might become creativeeffective adults with humane concerns.</p>
+            <p>Their behavior and belief patterns are much like those of the creative, selfactualizing adults now. being studied.</p>
+            <p>There are, it has been noted, as many girls as boys in this group.</p>
+            <p>The girls seem to be characteristically feminine with somewhat more of tie subjectiveasthetic orientation in contrast to the boy&#x27;s objectivetheoretical orientation; but they seem to be developing a good balance in terms of malefemale qualities.</p>
+            <p>The adolescent girl seems to have much in the way of potentiality.</p>
+            <p>The question is will she become selfrealized as this term is now being defined, i.e., will she fully develop and ae fully use her abilities?</p>
+            <p>The evidence seems to indicate that women, even most of those who are intellectually able and creatively inclined, have not developed fully nor made social contributions in line with their promise and potential.</p>
+            <p>Male researchers report that women contrasted with men have contributed fewer new theories, been less influential in social change, and developed fewer recognized artistic innovations.</p>
+            <p>As was noted earlier, we have been working with the test results of a large number of able adolescents over the past few years and assessing them in terms of creativeproductive dimensions.</p>
+            <p>Much of our data has been gathered by using the same instruments that McConnell and Heist have used in their studies of able college students.</p>
+            <p>Interestingly enough, despite ellegations that adult women are not particularly creative in terms of such accomplishments as musical compositions and scientific discoveries, girls generally test higher than boys in attitudes that are desig- nated as creative, e. g-, complexity, aesthetism, thinking intro- version, and social maturity.</p>
+            <p>Our studies also show girls as being relatively more open (a quality needed for creative develop- ment) and less prejudiced (a quality of obvious importance in human concern for other people.) Boys, even very able ones, receive higher scores (and thus are measured as less tolerant) on the Kokeach Dogmatism and Rigidity Scales.</p>
+            <p>Beyond the promise shown in terms of creative and open attitudes, we may also look at the potentialities of the able female in other ways.</p>
+            <p>There is little evidence that she is intellectually less capable than her male counterpart although she may be somewhat more highly developed in verbal areas and relatively less developed (or skillful) in mathematical and scientific areas.</p>
+            <p>This special female verbal facility is apparent very early: little girls learn to talk sooner and the story goes that they talk more (and certainly with less aifficulty).°4 They also learn to read more easily and seem to maintain an advantage in at least communication mechanics and techniques (skill in reading, spelling--fluency in handwriting). women are also socially sensitive and humanely concerned.</p>
+            <p>Among girls these characteristics can be seen as preferences for people over things (they do not readily make creative innovations when faced with a red fire truck but they do very well on the nurse&#x27;s kit, as Torrance points out).</p>
+            <p>Although girls are less aggressive socially than boys and cften talk less in mixed groups, they tend to be sensitive to individual differences and to be considerate and accepting of others.</p>
+            <p>As Torrance says, &quot;In our culture, sensitivity is a feminine virtue, while independence is a masculine virtue.&quot;°?</p>
+            <p>However, for the girl or woman to be creative she will need to be independent as well as sensitive.</p>
+            <p>Further, women seem to be particularly sensitive in an aesthetic sense.</p>
+            <p>With the adult woman this aesthetic sensitivity is often at the appreciator or at the doitformyownenjoyment level and not in terms of a real drive to stimulate interest in art for all through education or to paint or sculpt in transcendant ways.</p>
+            <p>There seems to be reason to believe that here is an area in which women have real strength in terms of inclin- ations and an area in which our society (with everincreasing leisure time and the goal of complete development for each indivi- dual) has great needs.</p>
+            <p>This aesthetic realm, at least in terms of large scale involvement of people, is practically uncharted.</p>
+            <p>We have seen that there are bases for describing individuals as having different value systems, kinds and intensities of interests, styles of thinking, openness to possibilities, potential for commitment, humane concerns, aesthetic sensitivities, verbal skill, possibility (liking for) involvement in intellectual tasks, desire to make a contribution and to make changes, and belief in self and human beings in general. ie have seen that there are as many girls as boys who seem to have what we have termed creativeintellectual predispositions and humanitarian- idealistic value systems. ie also feel that despite all these abilities and inclinations women do not develop fully ina personal sense nor contribute fully in a societal sense.</p>
+            <p>The crucial issue is how to cultivate these creativecontributive womeninembryo to increase growth in the directions specified.-° It is my contention that there are good risks and bad risks in any enterprise. kesearchers often comment that certain investigators almost always get results because they design their studies in ways that pay off.</p>
+            <p>This thinking may relate to discussions of sarendipity and luck.</p>
+            <p>Many scientists say that we make our luck by being well prepared and ready with the facts when a lucky accident happens. sg —— a5 Interpreted in terms of helping girls to develop fully and make social contributions, I would say that this means that some girls are good bets and others are not.</p>
+            <p>All women suffer when a girl is given a scholarship and does not finish school or when a woman gets a medical degree and never practices or when a woman walks out on a job in the middle of the year without prior warning because she wants to marry or move with her husband.</p>
+            <p>I feel that we now have a few guidelines for choosing girls who have strong creativecontributive inclinations and who may persevere in their commitments.</p>
+            <p>We are beginning to be able to pick out the good risks.</p>
+            <p>It is my feeling that the good risks will be most apt to make full use of scholarships and encouragement.</p>
+            <p>By helping the girls who appear to have commitment and concern for society and a strong desire to transcend themselves, we may find more women making important contributions.</p>
+            <p>Out of the literature concerned with mentally healthy and creative people and the few things we know and/or surmise about creative women, °° we find that one of the aspects of cre- ativity is a desire--even a deeprooted need--to go beyond the self.</p>
+            <p>Gordon Allport speaks of this as an extension of the self.</p>
+            <p>This going beyond &quot;the self&quot; and beyond the &quot;here and now&quot; and beyond &quot;everyday reality&quot; to make of life more than it appears to be is all important.2?</p>
+            <p>If we add to this transcendental per- spective and vision a belief in a cause of a new solution ora new art form, we have what I have termed commitment.</p>
+            <p>It is my thesis that for women commitment may be more important than career.</p>
+            <p>The engagement with problems can be car- 30 With ried on in all of the discontinuities of a woman&#x27;s life. a goal and a dedication a woman can move from student role to researcher to professional practice to parttime consultant work to fulltime homemaking.</p>
+            <p>With genuine commitment she can work on the problem that she feels most important in any of these contexts.</p>
+            <p>The point is that the posing of questions and the searching for answers must always be there--not only maintained but enhanced. (She writes Gone with the Wind on grocery sacks and tries out new mathematical formulas on a blackboard above her sink.) Beyond the fact that a need for commitment is essential for a creative and a contributive life, there is also the need for learning how to learn.</p>
+            <p>Not only is there the fact that one must seek and continue search all through life, but that the boundaries and avenues of search must be aefinea.?+ How do we develop ways of creating or inquiring or solving problems or thinking. critically? - Recently researchers have been experimenting with spe- cific approaches that are felt to foster creative thinking, &gt; inquiry method, &gt;&gt; discovery,°* Socratic questioning, &gt;? and other problem solving approaches. °° In discussing these new approaches and also the new curricula Cronbach has this to say, &quot;The aim of the new curricula is less to equip the student with the know- ledge he is likely to need than to advance the student&#x27;s awareness LT of the origin of knowledge, its trustworthiness and its limita- tions.</p>
+            <p>More important than his learning any one fact in school is his willingness to learn from the discipline during his adult life.&quot;?/ All of these methods of &quot;learning how to learn&quot; and the new ways of looking at the structure of knowledge have ad- vantages over rotelearning and recitation~© approaches in that they give the learner more autonomy, an essential when the learner is on his own as the woman may be during parts of her life, and certainly an essential for anyone who hopes to be creative.</p>
+            <p>The development of commitment and of critical thinking skills, then, are the aims I am suggesting for creativeintel- lectual girls.</p>
+            <p>The goals (as is usually the case in education) can be more readily set than the processes by which we attain them.</p>
+            <p>However, there are clues emerging from educational and psychological research as to the kind of educational experiences-- methods and approaches--that are most likely to develop such qualities.</p>
+            <p>Selfawareness (What are my needs, values, talents?) and an awareness of possibilities (What are the arrays of social causes, educational reforms, new art forms, or scientific break- through?) are vital before a choice of direction or a commitment can be made.</p>
+            <p>Selfawareness and clarification of goals can be fostered by counseling (particularly clientcentered counseling approaches) and awareness of possibilities can come about by a wide variety as well as challenging and stimulating educational exposures.</p>
+            <p>Modelscan do much to supply awareness of both what to do and how to do it, what the world offers and how to deal with the offerings.</p>
+            <p>Since creativeeffective female models who also have social charm and feminine appeal (seemingly a necessity if we are to lure the young) are not always available, 9 there must be carefully planned programs for presenting such models.</p>
+            <p>Biographies and fiction, radio, tapes, film and personal appear- ances all may be used.</p>
+            <p>These should be prototypic women (ideal- ized images) who face the full and complex world (family responsi- bilities included), have developed a dedication in terms of work- ing on a significant problem, and are more shapersof than shaped- by their environment.</p>
+            <p>The pattern is indispensable but students (especially girls) also need encouragement and recognition.</p>
+            <p>Someone who says, &quot;You would make a fine scientist&quot; or &quot;I see that you have a special flare for writing&quot; and follows this up with specific suggestions and help when it is needed.</p>
+            <p>The encouragerrecog- nizer~promoterpatronsponsor (male or female) differs from the model (although see person may be the same) in that this indi- vidual (the sponsor) is more than a patternoflife to be identi- fied with and studied.</p>
+            <p>The sponsor must, in addition, take the active role of recognizing and encouraging talent and predisposi- tion in the girl.</p>
+            <p>A teacher or a family friend may play this role although often it is enacted by a parent or a relative.</p>
+            <p>Beyond directline human contacts there should be oppor- tunities for growth supplied in the school, home or community-- laboratories, discussion groups, art and music classes, cultural events, books and magazines. (Girls who do not sample the vari- ety of rich offerings in our middlesizedand large cities are losing much of their education.) And as the girl begins to mature there must be chances to participate actively--to sponsor or direct discussions, to be a laboratory assistant, to lead a group in social innovation, to perform in musical events, or to display her paintings.</p>
+            <p>There are no limitations, in terms of geograph- ical locale, to the possibilities for participation--*° and the doing is unbelievably rewarding.</p>
+            <p>As one girl said, &quot;The girls who haven&#x27;t organized or done something on their own just don&#x27;t know what they are missing!&quot; With all this commitment and these lasting skills, the question now arises: what are women to do?</p>
+            <p>Probably many of the answers come from their own predispositions and talents.</p>
+            <p>This does not mean that with the great need for talented tech- nologists women should necessarily eschew these areas. (Women make excellent computer programmers and fine laboratory tech- nicians.) However, since the great needs of our society are for maintenance and enhancement of the natural and aesthetic worlds and for farreaching innovations in the human world, and since our creativeconcerned girl has been shown to have communi- cation skills, humanitarian leanings and aesthetic awareness, there is every reason to encourage these girls to develop in ways that their talents and attitudes lead them.</p>
+            <p>In the presentation of the world and its complexities, there should be a companion pre- view of the problems to be solved.</p>
+            <p>Creative and intelligent young people are characteristically more interested in what is not known, than what is known--what is not solved, than what is a fait accompli.</p>
+            <p>They want something to work on and towards, and if they are mentally healthy and have adequate egostrength they do not object to the task being difficult and complex.</p>
+            <p>In the broadest terms, the problems that should be pre- sented to our able girls and particularly to the creative intel- lectuals include the ones that were discussed earlier-~-survival, the human condition, basic needs (educational, mental health and physical health) and enhancement possibilities (such as prob- lems in positive mental health and in the aesthetic world).</p>
+            <p>Drews, Elizabeth lMi., &quot;A Study of Non-Intellectual Factors plpal Superior, Average and Slow High School Students,&quot; Cooperative Research Grant, (in preparation).</p>
+            <p>R., Heist, Paul, Reports released by the Center for the Study of Higher Education, University of California, Berkeley.</p>
+            <p>Srole, Leo, et al., Mental Health in the Metropolis: the Midtown Manhattan Study, Volume I. (New York: McGraw-Hill, 1962).</p>
+            <p>Gurin, Gerald, et al., Americans View their Mental Health (New York: Basic Books, inc., 1960).</p>
+            <p>Abraham Maslow (Motivation and Personality, New York: Harper &amp; Brothers, 1954) found that few people--male or female-- could be considered selfactualizing or autonomous before the age of 35 or 40.</p>
+            <p>Apparently it takes a great amount of recognition and experience before basic needs are met and the individual has grown beyond and become independent of them most of the time.</p>
+            <p>Since most girls marry at an early age and since society does not fully value her role as a homemaker and mother (which is often not intrinsically chal- lenging and satisfying for the intellectually able woman), the chances that they will actualize their potentialities are not good.</p>
+            <p>As one young woman looking at her former classmates reports: &quot;The girls who were devoted to molding school spirit now entertain themselves (but not their husbands) with neighbor- hood gossip, and the insightful literature and psychology majors lose themselves in thirdrate novels and afternoon television serials that defy classification.&quot; We cringe at the thought of decimating Russian babies with germ warfare and shudder at what seems to be needless blood- letting in the Congo and in Algeria. rao, C.</p>
+            <p>Wright, Listen, Yankee (New York: McGraw-Hill, 1960).</p>
+            <p>There is a number of studies being conducted at present as to the effect of certain kinds of deprivation (sensory and environmental) on learning, both learning readiness and im- mediate and longterm learning.</p>
+            <p>Hebb, D. 0O., Organization of Behavior (New York: John Wiley &amp; Sons, Inc., 1949), has done a considerable amount of work in this area and the the- ories of Piaget also have been a major contribution.</p>
+            <p>Samuel Kirk at the University of Illinois has found that special experiences (nursery school) facilitate learning in preschool children from culturally limited backgrounds.</p>
+            <p>Fred Strodtbeck at the University of Chicago is at present giving prereading experiences with 4-yearolds from the tenements of Chicago--presenting books, food, and love simultaneously.</p>
+            <p>John Dewey (How We Think) has explored and theorized in this area; Jerome Bruner (The Process of Education) has suggested guidelines for programs and curriculum revision; however, the task remains to be done.</p>
+            <p>P., &quot;The Future of Man,&quot; The Nation Shoben, Edward Joseph, Jr., &quot;Culture, Ego Psychology, and an Image of Man,&quot; Teachers College, Columbia University, April, 1960 (mimeographed report).</p>
+            <p>This point of view is asserted by the &quot;third force&quot; in psy- chology and has been developed by E.</p>
+            <p>The emergence of man&#x27;s mind has been described philosophically, poetically and scientifically by such diverse personalities as N.</p>
+            <p>Among those studying, describing and testing the healthiest and/or most contributive species of mankind are A.</p>
+            <p>Further reference to the concept of the good society and the evolution and assessment of history&#x27;s values can be found in Herbert J.</p>
+            <p>Muller&#x27;s Uses of the Past, Morris Ginsberg&#x27;s &quot;A Humanist View of Progress,&quot; (Ihe Humanist Frame, editor: Sir Julian Huxley), Bertrand Russell&#x27;s Principles of Social Reconstruction, and the essays found in The National Purpose, (Essays by Adlai Stevenson, Archibald MacLeish, John W.</p>
+            <p>Abraham Maslow (Toward a Psychology of Being, New York: Insight Books, 1961) gives considerable support for such assumptions. 19.</p>
+            <p>The following are phrases used in the literature on positive mental health to describe qualities of the mature individual and which are strikingly similar to descriptive phrases used in creativity literature.</p>
+            <p>Measures are now being taken so that these qualities can be quantified and predicted. 1.</p>
+            <p>Allport, Gordon, Becoming, New Haven: Yale University Press, 1955 a. possession of long range goals central to person&#x27;s existence —- values &quot;termini of intentions&quot; unfinished structure gives dynamic power for future conduct b. acquisition of conscience as directive force for guiding actions along positive lines - &quot;generic&quot; conscience to guide style of being c. capacity to feel less and less satisfied with answers to better and better problems - &quot;propriate striving&quot; toward unity of personality; risk taking and varia- tion d. autonomy - &quot;selfobjectification . . . see personal equation clearly written out .. . follow with some success a selfchosen course of action 2.</p>
+            <p>Rogers, Carl, On Becoming a Person, Boston: Houghton- Mifflin Company, 1961 a. selfrealization, fullyfunctioning individual b. openness to experience - extensionality c. expressiveness, communication - relate to outer world d. autonomy - control over own behavior e. internal locus of evaluation f. willingness to be a@ process g. trust own ability to form new relationships with environment h. basic condition for fostering creativity is under- standing empathically i. p. 193 - &quot;I believe it will be clear that a person who is involved in this directional process which I have termed &#x27;the good life&#x27; is a creative person.&quot; 3.</p>
+            <p>Maslow, Abraham, Motivation and Personality, New York: Harper &amp; Brothers, 1954 a. selfactualization - growth motives (distant and often unattainable goals) b. autonomy - control over own behavior ec. respect for self and others d. flexible - tolerance of ambiguity e. philosophical sense of humor f. enthusiasm, spontaneity, and curiosity g&amp;. openness to and striving for new i cbiaieanania - risk- taking h. realityoriented - perception 20. ali a2 25. 26. 4.</p>
+            <p>Jahoda, Marie, Current Concepts of Positive Mental Health, New York: Basic Books, Inc., 1958 a. autonomy, independence - selfreliance in face of difficulties b. objective selfimage - healthy ego concept ec. selfrealization - blending of total personality toward achieving best of what might become d. perception free from distortion e. sense of values - long range goals f. empathy g. aesthetic appreciation h. flexibility i. productivity Huxley, Julian, &quot;The Humanist Frame,&quot; The Humanist Frame (editor: Sir Julian Huxley), New York: Harper and Brothers, 1961, p. 23; &quot;The welldeveloped wellpatterned individual human being is, in a strictly scientific sense, the highest phenomenon of which we have any knowledge; and the variety of individual personalities is the world&#x27;s highest richness.&quot; We recognize that in most cases it would be difficult to find examples of &quot;pure types&quot;--especially among adolescents.</p>
+            <p>Further, combinations and the overlapping of value systems often tend to cloud the picture.</p>
+            <p>However, evidence thus far indicates that these three patterns or value orienta- tions exist and the strongest plays an important role in determining the direction of growth and societal roles that an individual will take.</p>
+            <p>The dynamics of this phase of personality development are yet to be fully described.</p>
+            <p>Martin Luther King&#x27;s and Gandhi&#x27;s views are considered &quot;troublesome&quot; by many businessmen. (Smith, Lillian, &quot;A Strange Kind of Love,&quot; The Saturday Keview, October 13, 1962).</p>
+            <p>Heist, Mimeographed papers from The Center for the Study of Higher Education, University of California, Berkeley.</p>
+            <p>Paul, Guiding Creative Talent, (Englewood Cliffs, New Jersey: Prentice-Hail, Inc., 1962), p. lle.</p>
+            <p>There are many young people who do not clearly choose either the open humanistic behaviors or the closed, nonintellectual behaviors; and it is encouraging to note with this group that, in describing their &quot;ideal selves,&quot; they choose activ- ities that are relatively more humane and imaginative than when they describe their &quot;real selves.&quot; 27. 28% 29. 30. pie It is said that &quot;Lucky accidents don&#x27;t happen to dead cows.&quot; In reviewing references to women.who have &quot;made a difference&quot; in the past, we have noticed a large proportion who have been socially creative (e.g., the great humanitarians) rather than creative in areas such as science or music.</p>
+            <p>In the existing studies of creativity there seems to have been little intensive effort to assess and describe socially creative people, although A.</p>
+            <p>Anderson have described their behavior in general terms.</p>
+            <p>Blackham has stated (&quot;The Human Programme, The Human- ist Frame, Editor: Sir Julian Huxley, New York: Harper &amp; Brothers, 1961, p. 141): &quot;. . . reality is tolerable only in so far as it is being transcended.</p>
+            <p>But that is the human vocation.&quot; Although the discontinuous pattern of a woman&#x27;s life creates. professional problems, there are some aspects which might be considered advantageous.</p>
+            <p>Mary Bunting (&quot;A Huge Waste: Educated Woman Power,&quot; New York Times) has said: &quot;Perhaps women, because they are not the breadwinners, could be most useful as the trailbreakers, doing the unusual job that men cannot afford to gamble on.</p>
+            <p>They may, in fact, be far more valuable working on the fringes, where there is always room, than competing with men in the intellectual market places.</p>
+            <p>The unexplored is boundless.&quot; More and more our educational emphasis must be on providing a liberal arts or general education which will prepare a generalist rather than a specialist (see kockefeller Report Pursuit of Excellence).</p>
+            <p>If such education is given in the late high school and early college years (and this is the trend of curriculum change for the able student) there will still be time for some specialization before graduation.</p>
+            <p>However, &quot;specialization&quot; or &quot;specific career&quot; may not be so much the point for women (beyond an early twenties round with jobholding) as is commitment.</p>
+            <p>Morison points out that &quot;technical problems which now divide the special- ties will in large part have been handed over to the com- puters and we will have taught ourselves a language, we can all use in common . .. [we must concentrate then]... on the even more demanding tasks of generalization, syn- thesis, and judgment which only man can carry out. [Edu- cation must teach us to think critically andj; &quot;to grasp general principles, detect relevance where none was seen before, and create new conceptual schemes. . .. [above all women must assume moral responsibility since in our new interconnected world what one person does or does not do is more important than ever]. .. .</p>
+            <p>The point is that we are now living in a world in which almost everyone of our 32. 33. 36. 37. 38. 39. 40. actions has in some way an effect on almost everyone else in that world.&quot; .. . [Women must know that what they do affects everyone] &quot;everywhere and at all times in the future, [and] they must care about it.&quot; Torrance, Paul E., Guiding Creative Talent (Englewood Cliffs, New Jersey: Prentice-Hall, Inc., 1962).</p>
+            <p>Richard, The Hlementary School Training Program in Scientific Inquiry, Title VII, Project Number 216, National Defense Education Act of 1958, Grant No. 7-11-038.</p>
+            <p>Beberman, Max, &quot;Math Is Fun,&quot; Time, (July 25, 1960, p. 24).</p>
+            <p>Don Oliver of Harvard is presently studying approaches for teaching &quot;Socratic questioning&quot; in junior high school social studies classes under a U.</p>
+            <p>Bruner, Jerome, The Process of Education, Cambridge, Massa- chusetts: Harvard University Press, 1960.</p>
+            <p>Cronbach, Lee J., &quot;Psychological Issues Pertinent to Recent American Curriculum Reforms,&quot; (paper delivered on part of symposium on &quot;Motivation, Learning, and Teaching,&quot; XIV, International Congress of Applied Psychology, 1961).</p>
+            <p>Fact learning, due to the magnitude and changing nature of fields of knowledge, is no longer thought to be as practical as educators once believed, although Skinner is programming learning on ways to get facts into heads more quickly.</p>
+            <p>It is probable that attractive women scientists and scholars are more available for models than our able girls think.</p>
+            <p>However, @ survey we conducted for NSF three years ago showed that high school and college honor program girls considered women scientists to be most unattractive.</p>
+            <p>MacKinnon reports that women mathematicians were organizers-- gave plays, etc., when they were young.</p>
+            <p>Pee a Geo 4 EDUCATION FOR WOMEN A Bibliography of What Has Been Said Supplement 1 1961-1962 Evelyn Perloff, Ph.D.</p>
+            <p>Division of Educational Reference Purdue University &quot;Supplement 1&quot; to &quot;Education For Women, A Bibliography of What Has Been Said (1950-1961),&quot; brings this bibliography up to date.</p>
+            <p>That is, the Supplement comprises U.S. references in the area of education for women, which appeared from 1961 until autumn 1962.</p>
+            <p>In addition, perti- nent references which had been unintentionally omitted from the 1950=1961 bibliography, are now included.</p>
+            <p>The following indexes were again the primary sources utilized in compiling this supplement: (1) Cumlative Book Index (not Books in Print as previously stated), (2) Education Index, (3) Guide to Guidance, (4) Psychological Abstracts, (5) Readers&#x27; Guide, and (6) Sociological Abstracts.</p>
+            <p>Adhering to the original purposes for prepar- ing these bibliographies, only those references which either dealt directly with the education of women or were obviously related to specific aspects of educating women were included.</p>
+            <p>Objectives and projects relating to the education of women Factors of womanhood relating to the education of women Factors of womanpower relating to the education of women II.</p>
+            <p>General college plans and curricula relating to the higher education of women Specific college programs and evaluations relating to the higher education of women Goals, values, and preferences of coeds relating to the higher education of women (Bibliography, 1950-1961 &amp; Supplement 1, 1961-1962) Pages 1-10 19-22 1-5 19-20 6-8 ei 9-10 11-18 23-29 11-12 23-24 13-15 25-26 16-18 27-29 Item Numbers 1-153 285-325 1-82 285-312 83-128 313-319 129-153 319-325 154-284 326-408 154-189 326-355 190-233 356-374 234-28) 375-408 Supplement 1 I The Education of Women - General References A.</p>
+            <p>Ladies’ Home J., 1961, 78 (Apr.), 43+. so eagse 292. ae: Anna Le Rose.</p>
+            <p>College Board Review, 1962, 46 (Winter), 27-31. 295.</p>
+            <p>Junior college must provide appropriate educational programs for women.</p>
+            <p>Conversations with Cassandra: who believes in education?</p>
+            <p>McBride, Katherine E., What about women&#x27;s education?</p>
+            <p>Women&#x27;s education: facts, findings and apparent trends.</p>
+            <p>NAWDC J., 1960, 2h (1,0cet.), 35-39. -19¢ 301. 302. 303. 304. 305- 306. 307. 308. 309. 310.</p>
+            <p>Vocat J.; 1962, 37 (Apr.), 14-15. ia sca Raushenbush, Esther.</p>
+            <p>School dropouts: the female species. | WNAWDC J., Stivers, E.</p>
+            <p>Report of a conference commemorating the Oth anniversary of the Women&#x27;s Bureau, June 2+ 3, 1960.</p>
+            <p>J., 1962, Sl (May), 12-14. ee Zapoleon, Marguerite W.</p>
+            <p>NAWDC J., 1960, 2% (1, Cet.), 40-47. -20- Supplement 1 B.</p>
+            <p>Factors of womanhood relating to the education of women 313. 314. 315. 316. 317. 318. 319.</p>
+            <p>Bulletin of the Committee on Human Development, University of Chicago, 1958.</p>
+            <p>Child Developme, 1960, 31, 721-728. -2]- Supplement 1 C.</p>
+            <p>Factors of womanpower relating to the education of women 320. 321. 322. 323. 32h. 325.</p>
+            <p>The comparative academic achievement of young and old.</p>
+            <p>The performance of aged females on five nonlanguage tests of intellectual functions.</p>
+            <p>Posthigh school plans of senior girls in relation &amp; scholastic aptitude.</p>
+            <p>Sex differences in high school scholarships, a study of Connecticut high schools in 1956.</p>
+            <p>For mature women: a late career; For residence halls: a new source of staff.</p>
+            <p>Is discrimination against talented women necessary?</p>
+            <p>Quart., 1961, 9; 179- -~22= Supplement 1 II The Education of Women - Higher Education General college plans and curricula relating to the higher education of women 326. 32Ts 328. 329. 330. 331. 332. 333. 335- 336. 337- 338.</p>
+            <p>Public Relations Department, Woman&#x27;s College, University of North Carolina, 1959.</p>
+            <p>Times Mag., May 7, 1961, 23+. aaa Change and choice for the college woman.</p>
+            <p>AAUW J., 1962, 55 (May), 203-284. eo ee Cirtautas, Kazys C.</p>
+            <p>Be, Jre Prediction of first year college dropout, using ACL need scales.</p>
+            <p>Heist, P. &lt;A commentary on the motivation and education of college women.</p>
+            <p>Do present and future responsibilities of higher education pose special problems in the education of women.</p>
+            <p>Horn (Ed.), Proceedings of the 8th mational conference on higher education.</p>
+            <p>Utilizing the stepwise multiple regression procedure in selecting predictor variables by sex group.</p>
+            <p>Measmt., 1962, 22 (Summer), 401-404. -23- 341. 343.</p>
+            <p>Bul 345. 346. 347. 348. 349. 350. 351. 352. 353. 354. 355+ Supplement 1 Ludeman, W.</p>
+            <p>Declining female college attendance: causes and implications.</p>
+            <p>Washington, D.C.e: Catholic University of America Press, 1957.</p>
+            <p>Address at National Association of Deans of Women, Washington, D.C., April, 1954.</p>
+            <p>National Education Association, National Association Women Deans and Counselors.</p>
+            <p>Washington, D.C.: National Education Association, 1962.</p>
+            <p>Top level training of women in the U.S., 1900-1960.</p>
+            <p>Sex and equal opportunity in higher education. ——— &lt;——— em seme Undergraduate education for women.</p>
+            <p>Report of a conference at Earlham College, April 29 = May 1, 1962.</p>
+            <p>What&#x27;s next for the girl who graduates from high school. (revised leaflet) Bloomington, Ind.: Director of Admissions, Indiana University, 1960.</p>
+            <p>AAU J., 1957, 51 (i, O6tej, TA. aR =O Supplement 1 B.</p>
+            <p>Specific college programs and evaluations rélating to the higher education of women 356. 358. 360. 362. 363. 364. 365. 366. 367. 368. 369.</p>
+            <p>Study of the preparation for for the role of parent~aseeducator in selected Catholic women&#x27;s colleges. “Washington B D.C.: Catholic University of America Press, 1961.</p>
+            <p>Ellis, Constance D. (Ed.) The magnificent enterprise: A chronicle of Vassar College.</p>
+            <p>The role of women&#x27;s colleges in the physical sciences.</p>
+            <p>Report of a conference held at Bryn Mawr College, Bryn Mawr, Pae, 1954.</p>
+            <p>Mademoiselle, 1950, 31 (Sept.), 122-125, National Science Foundation.</p>
+            <p>Unfinished business: continuing education for women.</p>
+            <p>Rec. 1961, 42 (4, Oct.), 261-269 Senders, Virginia L.</p>
+            <p>The Minnesota plan for women&#x27;s continuing education: 4 progress report.</p>
+            <p>Rec., 1961, 42 (4,0ct.), 270-278. -25- 370. 371. 372. 373- 374.</p>
+            <p>Torpey, We Ge The role of women in professional engineering.</p>
+            <p>Education for women in engineering in the U.S., 1885-1952.</p>
+            <p>Ann Arbor, Mich.: University of Michigan microfilms, 1955+ Women spark gain in science, math degrees.</p>
+            <p>Newsletter, 1961, 80 (Dec. 30), 432. ~26~ Supplement 1 C.</p>
+            <p>Goals, values, and preferences of coeds relating to the higher education of women. 375- 376. 377+ 378. 379. 380. 381. 362. 383. 384. 385. 386. 387. 388. 390.</p>
+            <p>Ann Arbor, Mich.: Author, University of Michigan, 1960.</p>
+            <p>Mademoiselle, 1951, 23 (Aug-), 233. —_— Bromley, Ann.</p>
+            <p>A study of women matriculants of the Chicago undergraduate division of the University of Illinois.</p>
+            <p>Ann Arbor, Mich.: University of Michigan Microfilms, 1954.</p>
+            <p>Woman&#x27;s place is in the wrong; address,Qct. 19, 1961.</p>
+            <p>NAWDC J., 1962, 25 (4), 148-155. eer Bumgarner, Fayne.</p>
+            <p>Social factors and OSPE scores for 46 women enrolled in the University of Oklahoma fall semester 1951.</p>
+            <p>A comparative study of the adult education activities of women&#x27;s business and professional groups in — Ann Arbor, Mich.: University of Michigan Microfilms, 1956.</p>
+            <p>Adult Leadership, 1954, 2 (Jan.), 2-3. vite 391. 392. 393- 394. 395+ 396. 397+ 398. 399. 400. hol. 402. 403.</p>
+            <p>Factors associated with graduate school attendance and role definition of the women doctoral candidates at the Pennsylvania State University.</p>
+            <p>Unpublished Masters&#x27; thesis, Pennsylvania State University, 1961.</p>
+            <p>Married women at Utah State University, spring quarter, 1960.</p>
+            <p>Proceedings, Utah Academy of Sciences, Arts, &amp; Letters, 1961, 38, 50-56.</p>
+            <p>Some intellectual attributes and educational interests of university women in various majors.</p>
+            <p>Ann Arbor, Mich.: University of Michigan Microfilms, 1960.</p>
+            <p>Commonweal, 1961, 74 (Apr. 28), 119¥121.{Disc.): Commonweal, 1961, 74 (Mar. 19), 207-209.</p>
+            <p>The motivation of college women today: a closer look.</p>
+            <p>Differences in occupational preference, stereotypic thinking, and psychological needs among undergraduate women students in selected curricular areas.</p>
+            <p>Selfacceptance and the mechanism of identification; . (college women) Ann Arbor, Mich.: University of Michigan Microfilms, 1957.</p>
+            <p>Background and personality factors and their implications for student selection in three women&#x27;s colleges.</p>
+            <p>Wilson (ga.) Institutional research on college students.</p>
+            <p>Atlanta, Ga.: Southern Regional Board, 1962. koh, 405. ho6. 4o8.</p>
+            <p>NAWDC J., 1962, 26 (1,0ct.), Ybh6, bi a Shuey, Audrey N.</p>
+            <p>Intelligence of college women related to family size, J. exp.</p>
+            <p>M- The married female school teacher: a continued study.</p>
+            <p>The relationship of selected variables. to the careermarriage plans of university freshman women.</p>
+            <p>Dissertation Abstr. 1962, XXIII, No. 1. woe. «29 Ey eS EDUCATION FOR WOMEN A Bibliography of uat Has Been Saia* 1950 - 1961 Evelyn Perloff Division of Educational Reference Purdue University The present bibliography is the first draft of a listing and categorizing of references in the area of education for women, which appeared in U.S. publications during the eleven year period, 1950-1961.</p>
+            <p>It&#x27;s major purpose is to include all that has been said (1950-1961) on the one specific subtopic of the woman problem, their education.</p>
+            <p>References covering other areas of the woman problem (employment, status, health, etc.) are also to be presented in separate bibliographies, with crossreferences included.</p>
+            <p>A first addition, however, is to be a 1962 bibliography on the education of women.</p>
+            <p>The following indexes were the primary sources utilized in compiling this bibliography on women&#x27;s education: (1) Books in Print, (2) Education Index, (3) Guide to Guidance, (4) Psychological Abstracts, (5) Readers&#x27; Guide, and (6) Sociological Abstracts.</p>
+            <p>Only those references which either dealt directly with the education of women or were obviously related to specific aspects of educating women were included.</p>
+            <p>Two other limiting factors were: (1) specificity to the United States, and (2) use of the English language.</p>
+            <p>No attempt was made to evaluate the references critically.</p>
+            <p>Of all the potentially pertinent references, 284 were finally selected.</p>
+            <p>These references were divided into two mejor sections (with several subsections): I.</p>
+            <p>The present subjectmatter groupings are not perfect.</p>
+            <p>They contain errors of omission as well as commission.</p>
+            <p>There are most likely incorrect and/or overlapping placements, inappropriate references, unimportant selectons, and failures to include pertinent articles.</p>
+            <p>A great many but unfortunately not all references were skimmed.</p>
+            <p>It is planned that the final draft of each biblio-~ graphy will result from a review of every reference, and will, therefore, be annotated. *Gratitude is expressed to Dr.</p>
+            <p>Remmers, Director, Division of Educational Reference, for his continuing encouragement and support of the project.</p>
+            <p>Objectives and projects relating. to athe education of women 1...</p>
+            <p>Education. of women komen ie Bexas - San fe da Texas; Naylor Company, 1957. ; . me Pe as Magarin bpm ’ 2...</p>
+            <p>American Council on Buicabldse niin caten on the Education of Women.</p>
+            <p>Another weok at wo n&#x27;s education and othas essays and addresses.</p>
+            <p>Boston: Simmons College Be Bookstore, 1955. — ~ pe Beneget » Le Te Modern mythology in women&#x27;s education.</p>
+            <p>Bull., 1950, = tees +), 487-496. - Discussion: 1951 shail : 253-259, an and 1951, Sept.), 553-555- 6.</p>
+            <p>Blackwell, Gordon W, To educate a women costs more.</p>
+            <p>News, 1959, XLVIII (No.7). 7 Blake, Re Re Behavior change and the problem of of education, Washington, DeCe.8 Amexican, Council on.</p>
+            <p>J. éduc.’Sociol., 1958, 32 (Sept. ) 5 28-36. © ‘one oot oe rage 7 Bucks, De S.</p>
+            <p>Jes 1956, 19 (June); 173-174. —— 12, Buretinal , Lee G.</p>
+            <p>What about your daughter&#x27;s future?, Towa Farm Sei. e 19605 14 (June), 9-10. ss : chervenik, E.</p>
+            <p>Review of Educatit Women for a changing world by ~ Kate H.</p>
+            <p>Personnel &amp; posed at Jey 1955, 33 (Apre); 453+. 14.</p>
+            <p>Home Econ., 1955, 47 (Oct.), toT-c00. 15.&quot; Clapp, MeAs Realistic Me icebions ‘for women, AAW Jy. 1950, 43 (June), 16.</p>
+            <p>David; Opal Dy * (Bas) “The education of women. ‘Washington, D.C.</p>
+            <p>American Council on Education, 1959. 18. 19. 32.4 sae 36. nye M. ‘Je? ¢ fea Dolan, Eleanor.</p>
+            <p>Educated women: a midcentury evaluation. 1956, 20 (Jan.), 219-228, Educ.</p>
+            <p>Forum, Dolan, Eleanor, fhe answer Sees sashington, &gt;.</p>
+            <p>Get By ens Association: Univers ty he oy 2a BoSee Td BHA Beit reetdo . “Drinker,” go a ae education.</p>
+            <p>Symposium: © Pass pale a est de 8 a BSR Sister Marys , Some ee of the art of teaching women.</p>
+            <p>Sddeation: re Geokh. &#x27; “Hortilntly, 1953, 180 _ Alls 174, 8), 184-197. a Baucating women for: a iiabe » et: &quot;Gihadi” 19850, 29 - Aug.) 231-292 Habein, Me Problémé in&#x27;vonei&#x27;s eaileatida.</p>
+            <p>J., (1950.23. (Wars), 117-123. &quot;‘amniee We We Educating women for a chanat works J ‘Home Econ., , 1957, 4g. (oct), 39-622, ., Hawkes , Anna 3 a ‘affairs.</p>
+            <p>LEN ROOK “Bducating 3 women on shies sehe is “international “Ass. ‘Amer.</p>
+            <p>Female. curricula eeiueamendl: ‘Review of Educating our ’ Gaughters vy L.</p>
+            <p>White,” Jee: Sate Reve git,” war 33 (Bept:9),&quot; aB-14.</p>
+            <p>AAU a2. 1953, 6 Aver), ~175~176. ” _Hottel, Althea K.</p>
+            <p>How fare American women? “Washington, Dace: 3 il&#x27;on Bauedtiony-1935- a - Bapeetion of women. pole Ase.</p>
+            <p>American “Coune 1 Bee 36 Uae &amp; Perepectives. for the education of women ade Rec: ’ y Heke Althea Ke How fare American wonen?, AAU cm 1955, 48 (may), 2234223, (abstract) a Yaks oe me ‘ ‘ _ Glance over our ‘eiiitiann: eS eat a a uF «AAU m , 1958, 52 (Gan. ), 95-98 37+ peg: 2 39- ko,” he, 43.</p>
+            <p>Women in the modern woeees their education and their dilemmas.’ Boston: Little, “Brown &amp;C Co. 5 1953+ : Kroushadie™ 0.</p>
+            <p>Coll. wilh, 1957, 43 (Mars), 89-9). i oT Te ialoaree, Amanda Re et ‘al.</p>
+            <p>Lipman, AS ‘Bducational egttiten ~ ‘the remerd aah Je educ. -Sociol., 19595/ 33°(septe); Gbekgyts .+_ Bcd 3 Bosel wuol) eek GST Lloyd«Jones, Esther M.</p>
+            <p>Lloyd-Jones, Esther, M» Women today ana tied caliddsien: ‘Teach.</p>
+            <p>Lloyd-Jones, ‘Bather Me The ‘Commission: on “the tadéation of Women since _ 1955.</p>
+            <p>Lloyd=Jones; Esther Mi” Our dear’ omnia jdaughivere: “AAUW-J. 5° 1957, 50 _(Mar.), 137-140.</p>
+            <p>Ghear’.’ House House, 1950, 2h Louttit-C.°M; Women: their roles and education.</p>
+            <p>Time, 1950, ee (Mar+27), 86~87: McBride, Katherine E, What about women&#x27;s education?</p>
+            <p>AAU fe “ 1958, 51 (Jans), 10210#, 9 Mendenhall, Te Co ; Women!&quot; s education and the educated women. ‘Sche &amp; aps I.</p>
+            <p>M. &quot;ae the career 2 Be Activ, 1951, 22 iss} 153-155- lasts, Miller, Je Don&#x27;t forget ‘the girls!</p>
+            <p>New look ‘for the oldfashioned shared ehsation of women.</p>
+            <p>Educating women for a changing world. vanneapolie: University of Minnesota Press, 1954.” Mueller, Kate H.</p>
+            <p>Women&#x27;s education! ‘vocational or liberal sh pamomaes Nat.</p>
+            <p>Jo, 1954, 18 (Oct.), 25-27. . -Mueller, Kate He Women&#x27;s education for what?</p>
+            <p>Ft: 70. 72. 73. ad i sO. 60e:i: wire “National catherie § Hateationat” ‘Aysociation= Committee ‘gn Coeducdticn” and the Education of Women.</p>
+            <p>National Catholic ee Porat Reaociation , Proceedings...</p>
+            <p>AHEMOE BRT Bh -30%, siartin siete Pied Heweomer &gt; ~~ A 3 ee of miter eihication: ‘for ‘American ‘Women. .</p>
+            <p>Deans &amp; Couns. dey I hee co F3 . . eh oo etl ehtiamaA pbs tac gts ts, Aapianss and ngrent trends.</p>
+            <p>Noxriss Ly We ‘How to educate .a, NOB Sate Revs: icing 3. (iow.27), Q-10+. pene h i ‘Education of women. ‘Clateiont, caniforniat “Seripps — are either.</p>
+            <p>Review of : Blasetg fuk bur “daughters ees L.- p, rere JY tw Radcliffe Institute in Thaipeeasht seule Selected BH, 1580 k ny of ‘women! 8. education . .and.,interests.;, Gane 1dge es MAGE 3 Authors qulys, 1962.</p>
+            <p>Review of Women in the modern world; their SS ana theit dilemmas “by.</p>
+            <p>Me Komarovsky. ~~ Newsweek,, 1953, 41 Gi (s June 15),, 28s Riesman, D.</p>
+            <p>Some continuities and discontinuities ins &quot; che’ Wihoricn of »women.</p>
+            <p>Third John Dewey Memorial Lecture at SC ai College 2 Pal Bennington, Vermont, 1957- ter 4 8 at | } wy _ Riesman, D..</p>
+            <p>Jy, 19935 32 (Nov-), apni ben ieee, schieer, He As Do high schools neglect the, iris?’ Chang. ‘Tines, 3 * Mot Shelly, Me a ° treideekions for the. education of women — Fy time of © defense.</p>
+            <p>Ge he our girls getting boys! “education?” “N N.Y., Time&#x27;s” Mage» 1950, (May 1k), 29» stodaara, G. b&gt; oa ‘the’ aaheation of 1 women. &quot;New ‘Yorks’ MacMi‘Llan,&quot; 1950. stoddara,.</p>
+            <p>Ge De Women! 8 ‘future edueation. ‘3: &quot; “Hone Reon &gt; 1950; 4B (apr. ll 259-262. parvey of the ‘education: of ‘women: planned.</p>
+            <p>Sch. &amp; Soc. »1953,, 77 (Jan. ) ,77- Tait, y Mader ier | I Beugetien of women for Ske oe York:, UNESCO ? 19 Poh Aad ee . oe “ cute ss riie&lt; 4 ‘Taylor, He,;, Education, for women. ..In.J» EB.</p>
+            <p>New York: Sheridan House, 1952. .‘, &#x27; 77: &quot;78. 79. oa Timm, Helga.</p>
+            <p>Abstr, (UNESCO) , 1959,&quot; 33 (Nov7). egitorad aloud «ul Webster, M, 2 We. ust ganpere our girls.</p>
+            <p>Wou., 1958, 37 (May), T - ehetoO) ¢S coMQl efggobny White; DT ors - ide ie Gua ‘our ion ea age Sheth » Harper ,) 1950, White y Le Te, Ire Peieniing ¥ women in a man! s worlds Athentic, 1950, “285-(Feb.), 52-59. je.</p>
+            <p>White, L, T., Jr. cama the oonttext of women! 8 | education.</p>
+            <p>Marr. _# Fam, Living, 49999 =r — \y eaeerr vilgon, Ve H.</p>
+            <p>Sey fod be 1953; 2 bea 5 - , “ ° * » e on +8 « « ° e . be « es t s ‘ we . ° : yet / ae i&quot; bs 4 i. + - * HS ~ e ‘ ¥ .</p>
+            <p>Be Factors of womanhood relating to the education of women 83. “8h, £ 91. ou. 96. : Cronheta, ceeaithe He Foeus on “the env for: womens: «Net.</p>
+            <p>Wom., 1960, 39 (Sune) 13. a a tg ; eth Barclay, Dorothy. &quot; Cosh: at ‘setool, girls. ati otis &amp; Mex x.</p>
+            <p>Times Meg. ) 1959; i iad Fee iy Bringing up “mother. enn AE 1953, gy hae - i 58.&quot; Buck’: D.</p>
+            <p>Pas Girl&#x27;s Nation; legislative training. for tomorrow&#x27;s women.</p>
+            <p>Wom., 1950, 29 (Oct.), 298-300; -/:.5 Chambliss ,&#x27; Ri’ Women too are persons. .</p>
+            <p>Bull., ae 3t (sept. ds sapien a vee vee &lt;4 eek? _Deans &amp; Couns. 3 1956, 49 (June), ST: de Luget, Je Contribatiae “of | towel! ‘economics ROE ‘to ‘the adattion of women in the world todays é &gt; ‘ Home Econ. , 1998, = (oct. )» 625~628, * ee) be ts Dowie, Elizabeth, &amp; ‘Kaye. ? “carol.</p>
+            <p>Role expectations of young women regarding marriage and @ career.</p>
+            <p>Discussion: 97, 161, 273, 673-675} 98, (May 11), (June 1), (Sept.28), (Hov.2).</p>
+            <p>AAUW J., 1959, 52 (Mar.), 147-150. - Hartley, Ruth E., &amp; Klein, A.</p>
+            <p>Washington, D.C.: Americn Council on Education, 1952.</p>
+            <p>Rec., 1961, (April), 404414, 100. 101. 102.&quot; 103. 104, 106. 107. 108. 109. 110. lle. 113. 114. 115. 116. 117. 118. 119.</p>
+            <p>Hottel, Althea’H.’ Changing&#x27;status of women, Nat: Ass.</p>
+            <p>Psychological problemsof women in different socieal.roles.....Bducs Recs,;1955,. 36 (Oct) 9 325=335+ r Jones)’ Se: Vs.</p>
+            <p>Report on the National conference. of women inthe defense decade. “ASS.</p>
+            <p>Bds State Univer. &amp; Allied Insts Proc.,, 1951, 39-46.</p>
+            <p>Women in America, Bevier,Lecture Series, -University of Illinois,.1950. . .</p>
+            <p>Kluckholm,, Florence Re American women and American values.</p>
+            <p>New York: Harper, 1953, Pp. 175-199. _Komarovsky, Mirra, » Punctional analyses, of sex roles.</p>
+            <p>Yaris basnivtoad to’ sagoe a of m Landis ‘ J.T. astitaaes and polavies i eetiad SOM a 2te among high school students.</p>
+            <p>Oceupations, 1952, 30(Apr.), siien Montreuil-Straus, Germaine.</p>
+            <p>The psychosomatic aspect of housework: report from France.</p>
+            <p>Me Adequacy of women&#x27;s expectations for adult roles.</p>
+            <p>The new woman. jp {Catholic women ) « Time, 1957, 69 (Apr.29) 5 NG. a 4. mel i a my. oes eth ear “ia gyd Bae Ta Gano an engage 3 OE 121.</p>
+            <p>Laer De Lad te pirere : 12h, Walters, J.;°e@ Ojeminn, RO?</p>
+            <p>HSA ‘study’ ‘ef adolescent attitudes! . 6: concerning the role of women.</p>
+            <p>WOE ‘BOCe ‘Psychol.&#x27;, 1952, 333 ys 101-110. ida 125%&quot; : (Meliin,” Pe Cultural, pak th boyy sex ee &amp; piewee Study... ‘E2196.</p>
+            <p>Weiss) R. oi, ‘&amp; Samelsdn, ‘Nancy Social‘roles of American’-voren:. their contribution to a sense of usefulness ‘and amportancte.</p>
+            <p>Ann ok tae nm ee : (parvey, Research ¢ fig age hon egal of a.” ee af salyhg jus sua odor 127., wider, Ae .</p>
+            <p>Be e008, | evect madd. ane J 1958, 2 (oct), 15-17. a UL. 128.</p>
+            <p>Young ‘een 8 Christian auscetdibelhs Are you satisfied to be 2 ba onl *) am eodays World?’ : New York: “Author, 1957) ~ yeebohl TEL 7 be wa * a? ret al t : ’ ‘ . * wale ‘ * eo. ‘ . - name 4% . ‘ ® 4 § . “ a4 whe wae 4 f + a af? or * \ 4 DLs ; * wa - cr 4 si tbe %: * ? % i Be e al a 4 . eu crm alee ms i : ™&quot; ‘ +X Fy A fa. 3 ep y ‘ ay 2 ed gE 4 et De Pie ; “y * €\* +f * 5 ‘ vy ‘ a es a, ae nt # 5 p pe *% Sey iin * . 4 5 8t% Py ca 3 es Me ~ ELS 4 Fi ry a + &amp; 3 +e IG as Es ‘ % é ‘ 4} \ 8 ei ett ae fi : no voile. &gt; * 3 G &#x27;- ae af i a} ae has ¢, Fi aid mS 4 i sd ee a hikers is caer ¥ Lye Pe é +e. 5 : bs fare + - Ps .</p>
+            <p>Riven meas oo &quot; ms ? % ably ae 2 i , 3 Pp be § + 2 fT f Sx a eee — e , a 5 C.</p>
+            <p>Factors of womanpower relating to the education of women.</p>
+            <p>S : 129. 130. i131. 133, stacl ve 136, 137. 138. 10. 11. 12, 143. ihe 145. 1h6, aie 3 a M.</p>
+            <p>Why do. bright ae pas ie stiff courses? . chiuss Forum, 1961, 25(Jan.), Tee el MBINOTq qidewol!</p>
+            <p>Times huibing, Me % our neeeade Waate” of ‘ples’ is &quot;\wonens with introductory “comments. itty 19614 50 (Jan.13), Eanble. oy Church, Ruth Ey ohanpower today and toneuaaie Amer.</p>
+            <p>F. ‘Bducational pokp ‘of high ptr girls, Nets Ass. ‘Deans Wom.</p>
+            <p>Bite Drews, ‘ “Bs Me Big waate of brain power: our gifted, girls.</p>
+            <p>Quins, ‘Irma He (Ed. ) &quot; Potentioliueen of women in the middle years.</p>
+            <p>East Lansing, Michigan: Michigan State University Press ; ress, 1950s Heist, P.</p>
+            <p>Implications from recent research on college students.</p>
+            <p>Intellectual functioning in high school girls and college women.</p>
+            <p>Motto, Je J» Study of educational goals and academic performance.</p>
+            <p>Adult Educ., 1960, 10 (No.4, Summer), 234237, National Manpower Council.</p>
+            <p>Pryon; Ruth W.- Investment in &gt; sinabte sense je A fellowship program of the AAU, 1 ; hingt&lt; American Sy getes rye eaves ee begin 1957. : re i: 149. ‘alien, Pe, &amp; Horton, C.</p>
+            <p>Some demographic’ usa eh ek - outstanding Negro Womens a Tegre ‘0 ‘Educ. , 1954, 23» WO6-M20. akg se 150.</p>
+            <p>Verhoff, J., Wilcox, Sie, &amp; ‘Atkinson, Jo’ We sistitevemitit: aiave in igh sehool, and sable?</p>
+            <p>Bae | women. &gt; 5 ebnorm. oy ‘Esychors 19535 ofthe Posy ogee A ‘ Poy: What&#x27;s wrong with anbition?</p>
+            <p>Weitz, H.,&amp; Colner, Re Me Relationship Meunaee the Jaceak Tana, goals ~~ land the academic performance of women; a: Noafiruatiod, ‘é Educ psychol.</p>
+            <p>Measmt., 1959, 19 (No.3, Aut), :373-380« OOCE ¢ RSM 1536 Wolfl¢; P&#x27;s ‘Deel. “America&#x27;s resources of specialized talent. .A report’ of the Commission on Human Resources and- Ravanced ats New York: , eerste on Human a end.</p>
+            <p>Adeoneet. gerne 19h ate re : Ps ss ned. oa ’ 4 zh . c 2 $0, 3 ste s? ’ ¢ el ~ ?— ”. ’ i : 2s pias Bio i 4 = sel = f : ie 3 gicat se OR ’ » ‘ aa. ed ad &#x27; 4 “ 2 ¢ . &amp; s° : II.</p>
+            <p>The Education of ‘lomen - Higher Education Ate sneral. college plans and. curricula relating to the higher éducation of ‘women 154s: 156.</p>
+            <p>L5Te 158. 159.-. 16%. 162; a 164; 165. 166. 167. 169. 170.</p>
+            <p>Role of the.women&#x27;s colleges in the next ten years. , “Ass.</p>
+            <p>Amers Coll, Bull., 1958, 44 (Mar.), 7&amp;-88 -College education is dowry of modern.American miss.</p>
+            <p>Conference..on constructive forces in education; in celebration of the 75th Anniversary of Wellesley College, October 16-18, 1949.</p>
+            <p>Wellesley, Mass.: Wellesley College News, 1950. ** — &#x27; Council for Financial Aid to Education, Inc.</p>
+            <p>Jo, 1954, 24 (Max.), 82-89. . : &#x27; Daw, B. i&quot; Building vital curricula ‘for today&#x27;s college women.</p>
+            <p>J., 1954, 2 (May), 555-558. = ‘Dean MeIntosh proves point: women&#x27;s colleges are of ‘agé.</p>
+            <p>Recs, (1958, 39°246-252. - Duddley, L., &amp; Cameron, M- E.</p>
+            <p>Do we need a new curriculum for women in higher education?</p>
+            <p>Women&#x27;s. college in the pursuit of excellence, Liberal Bac. , 1959, 45 (Mar-), ‘54-58.</p>
+            <p>The role of higher education in contributing to family life today.</p>
+            <p>Merrill-Palmer Quart., 1956, 2, 55-65. &#x27; Hartshorn, E.</p>
+            <p>Some samples of freedoms for women. students in higher education.</p>
+            <p>AAW J., 1958, 51 (May), 203-206. ee 171. a. 173. 174. 175. 176. &quot;178.</p>
+            <p>LT Qex 180. 181. 182. 183- ‘ .18h.. 185. 186. 187. 188. 189.</p>
+            <p>Times Mag., .1950,. (Feb.5), 10+. “Discussion; N.Y.</p>
+            <p>Women&#x27;s colleges and our changing moral’ standards. ‘ Coll. &amp; Waieer- + 1950, 25 (Jan.), 269-291. ‘ ‘Mueller, Kate He Professional as an ‘andiviaual.</p>
+            <p>J. 1960, 23 (June), 165+175. - Muller, Leo o &amp; Muller, Ouida Gean. ‘Colle ge for for coeds. *. ew York: Pitman Publishing Corporation, 1580. 0 &quot;Toole » De Jones?</p>
+            <p>Some reasons “why - business should support women&#x27;s colleges.</p>
+            <p>Banking, 1956, 48 fase. 59. ‘Radelifte Tnstithite for Independent Study.</p>
+            <p>Wasted women. ‘sre ‘ gcliol’. , 1960, 77 (Dec.7), Te | } Roberts,Eunice.</p>
+            <p>College. odusdtton is, for women, too! ae Home Econ.,... 1958, 50 (July), 436 eee 2 SBS LY Be wR en (wee ot Taylor, H.</p>
+            <p>Times Mage, 1958, . ead, 0.° Higher eduestion as 8 2 pibiie trust.</p>
+            <p>Vital Speeches, 1951; 17 (June) » 493-496. &#x27; Thompson, Dorothy.</p>
+            <p>Oh, ‘piofessor? &#x27; Ladies’ Home ‘Jej 1958; D (sane), 1.</p>
+            <p>Warren, Constance. .AAUW branches look at ee education.</p>
+            <p>Mademoiselle, 1958,- “LG: ‘(Jan.), 80-84 « ily (ey Women and — eduomtdnti.</p>
+            <p>AAW aes 1951, 51 (ost ‘y; ‘The Be specific eetlage programs and and evaluations relating to ihe. higher education of women 190. “Knsticen women at work: Business finds that they&quot; re people too.&quot; Newsweek, 1956, AT (Febs27), 76-77. 191.</p>
+            <p>Beckbay, De Ke Problems ny measuring the. effectiveness of professional education.</p>
+            <p>Educ. psychol. measmt., 1950, 10, 57-66. 192. snthnkg Sister Margaret Ann...</p>
+            <p>Catholic college for women and education ; » for, leadership.</p>
+            <p>Sarah Lawreneds Harpers ; 1958, 217 (Nov. ), diy. 195.</p>
+            <p>Collegiate education for marriage and femily living.</p>
+            <p>In Report of the Presidént to the Board of Directors for the year 1953-4.</p>
+            <p>Bryn Mawr, Pae: The College, 1954, (Dec.), 13-22. 197.</p>
+            <p>Chase, ‘Ee B. stuay of undergraduate records of graduates from Hunter College who later earned doctorates.</p>
+            <p>A study of the eraibation of: their college , education by the graduates of Clark Women&#x27;s College, Clark ers In Clark University Abstracts of Dissertations, ; 1950, 22, 129-131. 199.</p>
+            <p>Women with a college educationthe lives islew lead. _/ N.Y.</p>
+            <p>Sch &amp; Soce,. 1960, 88 (Mar. 26) , 163-164. 202. —— A.</p>
+            <p>R. “Student personnel ‘practices in junior colleges for women.</p>
+            <p>Salts Jey 1954, 25, hih5. 205 e ~ 206. 209+ , 210. 212. 213. ar 218.&quot; 219. 7 &quot;952,- (Sept) , 61s6525° espace i, Eells, W..C. .</p>
+            <p>Women, inthe | universifies pf. _ Berni ny actor Bmuee. .. weer: .Fehlmann, Hazel A.</p>
+            <p>A survey of. the: Medical Siopvtanial cantos offeredin the _junior, cola of, the.</p>
+            <p>Pav addi s Jeanne De Personal. ‘and professional ‘activities: of 19351952 graduates of Iowa.</p>
+            <p>State College.” annie MA thesis, Iowa State Colleges 1955».° 9... 3 aac Harvard®&amp; Radcliffe cooperate in sane program in business . administration for womens. ind.</p>
+            <p>Wom., 1956, 35 (Jan.), ee. : Kelley, We Fs- Observations on some Catholic colleges for womens — “Cath. educ.</p>
+            <p>Ste Charles, Mo.: Women&#x27;s Section, National Votabional Guidance &#x27; Asséciation, 1959. ug _ Lyle, Mary S.</p>
+            <p>Iowa State ae , Division . of Home Beppomics, (Dec.) 5. 1955+ she p, Lyle, Mary S.</p>
+            <p>Graduates reflect.on their eaueaticds ‘Se Home Bookie» 1997) 493 (1) (Jen.), 9n12. ; Marie, . opiates Hildegarde.. &quot; Objectives of ‘magnee education of women in the light of Papal teaching.</p>
+            <p>University women&#x27;s épinions.‘on’ their education. (Proceedings) iiirortaey of Illinois, 1951.</p>
+            <p>Mecord, De Radcliffe y and education for women. - Je ‘Mag. ; 1954, (Dec.5), 26-27* « Ee eet Mosbacher , W.</p>
+            <p>Be Women -— ‘of cooperative workstudy programs on. ‘the gollege level.</p>
+            <p>J., -1957; 32: 508-511. : Neal, Ruth. ee the offcampus woman epdiendy Personnel &amp; Rh 2S Je Ee: Nero woman looks at her tdotbaas wasemttet.</p>
+            <p>New York: Teachers College, Columbia University, 1956.</p>
+            <p>Readers Digest, 1951, 59 (Oct.), 109112. be ik a 221.</p>
+            <p>Panel. on cooperative study for Catholic womens colleges.</p>
+            <p>Radcliffe Committee on Graduate Education, for Women.</p>
+            <p>The Radcliffe Ph.D. gar ties} » Mass: Harvard Univer. .</p>
+            <p>Educ. , 1950, 22). 191k . ; aca ny} eter 22h, Shosbeck, R.</p>
+            <p>Five theiealid women college aduates re pet Washington, vomi ove DeCes, Bnai, Brith Vocational Service Bureau, 225.</p>
+            <p>Fouryear college curriculum in’ general’ education.</p>
+            <p>Education, 19505, BD). (Dec..) », 2h5~2h9. 226. a 65- Junior _— for yor daughter?</p>
+            <p>Training for citizenship at Mills. falinge: Ladies Home Je) 1950, - St (June).,, 23+; is einen ar hace 228.</p>
+            <p>Vassar: the kind of pe “a wn Bsns Week, 1956, (May 26), 229.</p>
+            <p>J» Home Econ. , &lt;aer 48; Wlbh17. 232. | ‘Women&#x27;: s progress; ‘college women 0 years: after, ‘Decup ations, &quot;1950, 29, 227. — 233.</p>
+            <p>Goals, : ss’ . aha 20s ead or gas’ relati bing, to to. the niigher “gducatioi of women. 23h. 236. 237- 238. 239+ 2ho. ahi. 243. 2h6. : eQhT. hs. 2ho. 250. aodereeas Mary: - “A descriptive study. ‘of ‘Values’ aaa: daterests ‘oft four groups of graduate women ‘at the: University. of: ‘Minnisota.</p>
+            <p>Dissertation Abstr, 1952) 12, epee : “phys we ‘something more of the depths! : Student: values at ‘Woman&#x27; a Coble. sabre A of North — ‘Relig Baus Baue.} a0, KO OF gPs peaty, Jeanthe Keller. “We pweat out our’ Sainpiis b imrttage.</p>
+            <p>Post, 11956, (Apr.1+), 58-59... jokfos ‘ais Boe SS Berry, Jane.</p>
+            <p>Life plans’ of solttege women&#x27;s te asi ne Ho J+ 990% 28,. ‘716-80, Sa Binger, C.</p>
+            <p>The ee on neces er today. “Bilsntle, 1961, (20%, Hombre ee, af) 3h. 28 ‘ Broiy, David S. pevaaiiaialadl factors ertecttnit soeieataey Beate and _.</p>
+            <p>Ke Responsibilities of women in higher ‘education. _Nat.,.Ass.: Deans Wom.</p>
+            <p>Changing college girls.” “Newsweek, 1960, 56, ‘(6ét. 10) 102: NR a He T. ? &amp; Swihart, Me Me &#x27; Postgraduation role: Preferences of senior women in college.</p>
+            <p>Living, 1956, 18 18, 52-57- codices sek smaller families, eS.</p>
+            <p>Factors influencing. women &quot;s. dacteions about higher s education.</p>
+            <p>Sex role and selfconcept: 4 odeuny: of the feminine sex role as perceived by eightyfive college women for themselves, their ideal woman, the average woman and men&#x27;s ideal woman.</p>
+            <p>AAU J.; 1955, 48, (Mar.) » 161-167. — Hopwood, Kathryn. ee ee of university college women.</p>
+            <p>J., 1954, 32, 464-69. 251. 252. 253+ 25h, 256. 257. 258. 260. 261. 262. 263. 264, 267.</p>
+            <p>Bs Interest and personality correlates ofcareeretlotivated and homemakingemotivated PED CEE, Women, ‘ de counsel.</p>
+            <p>Psychol. 5. 1258, 3s Whehg. * Kiell, N., &amp; Friedman, B.</p>
+            <p>Culture lag and nousewa tessa Re the -roll of the married female SOLER, etecwees JZ + educ.</p>
+            <p>Culture a. and sects Sageagnsne the role of the married female soilege graduate.</p>
+            <p>Living. sie 20, 301. iadatnied Seen POTS Knaak, - ‘Nancy Katherine.</p>
+            <p>A’ study of the, characteristics of academically successful and unsuccessful freshmen women who entered NorthwesternUniversity.in the fall of 1954.</p>
+            <p>Atlantic 1959, 204 (Nov.), 56-60.. i a alas std Lee, A.</p>
+            <p>Wom Lewis, Ne» D- College women and their proper spheres.</p>
+            <p>College values on the balance scales: AAUW&#x27;s ‘questionnaire , Survey.</p>
+            <p>Lind, My College women in A current crisis through military service.</p>
+            <p>Mey &quot;&amp; Markabesey,: ‘Ne Le (Eds.) Attitudes ‘of women én higher education.</p>
+            <p>Admin. &amp; Super. , 1951, 3t)- 385-395- Mallay, Js...</p>
+            <p>An leiedkr potilieer scholastic overand underachievement mee me college freshmen.</p>
+            <p>Marksberry, Ms Le Attitudes of sobbege women ‘toward’ selected roles in life.</p>
+            <p>Toward mutual responsibility. de. 800% “Issues ’ 1950, 6 (3), Wicca Mitchell, timers De Interest ‘profiles of university women.</p>
+            <p>Mueller, Ke He “Sex differences ‘in campus regulations: Personnel &amp; Guid.</p>
+            <p>Ses. 395% 32 po ae Muller , Leo Ce (Ba) | New rizons: for college. woinen. ~ Washington, D.C.</p>
+            <p>Public Affairs Press, 1 Murphy, Le By &amp; Reushenbush, E.“(Eds.) ° Achievement in the college years.</p>
+            <p>New York: Harper, 1960. ee a A 268. 269. 270.&quot; 272. ors Z e7Th. 275+ 276 e 277+ 278.&quot; 279: 280., 281. 282, 26h.</p>
+            <p>College women in the current crisis through individual ‘services: :BBB&gt; ear cole dew re WW Be ke pai obigiuas™ ?</p>
+            <p>Alice’ _ e ‘i : four years of fo experieiiee’ ® “procs: Towa Acad. ae j ‘Ries: ‘gy.</p>
+            <p>Ye College students” nterest in education s fob teaay alata: Je Home ecwsild 1960, 22, 763.</p>
+            <p>Ske : : 8 through community” sick 135 i ae ; Raley, Se B : ““Celitege wouien. @ Lip age 2 err “ service.</p>
+            <p>Deane. £ Coupes se, 1957, 2h» {oct dh Ein snes , ce vibes obeps Seve Pane Sanford, i. , “Frecata. rie a Webster, ms &amp; eS De ersonality peter yn during the = years.</p>
+            <p>Pe The eine and goals of lower divisior* iomen in Teachers college and. the. college of Business.</p>
+            <p>Administration at . the University of Hawaii as measured by the Vocational Sentence Completion Blank.</p>
+            <p>Unpublished :MA thesis; ‘University of Hawaii, 1953. &#x27; Smith,’ Joyee - ‘ Multipleenoicée ‘Rorschach résponsés - 6f over and’ under achievers among college women. — ‘MA. thesis, _ Catholic Molverstys 1991+ ad ee ae sien Smith, Mary Elinor. ‘Brobibiie | of “Prestmen: college. womén in felation ..to levels..of achievement. _ alereR aes MA chests ?</p>
+            <p>Catholic University, 1951. oes | — ae. gio, . my De Solomon, Adrian, .</p>
+            <p>Identification, ‘a1 etalnatation, apd ‘extension of. self; a study of perceptions’ of*self, mother, ‘and’ on al ina” samplé for college women: “ “Dissertation Abstr. , 1955, 15,1121.</p>
+            <p>H. “Motivation for “college” in high school, — mM 108 Sch, Revs, 1959, 67,&quot; 3205324. i Thomas, J+.Le, College doesn&#x27;t breed mee eS toertcan, 1952, 88, 121-123.</p>
+            <p>Ep Role, clarification pen the contemporary eo ae 2 : etacated: women. we Home Econ, 1953, 455: 567-510» we von.</p>
+            <p>Mering, Fe He, Professional &amp; SS ae women 8s ethers.</p>
+            <p>Psychol. , 1955), ae. (1), ’ Lae + tg White, Le, Jre, Do womens ! colleges. turn, out spinsters?</p>
+            <p>P... ae women who e ress g fuente, New York: Teacher&#x27;s College’, Columb iversity,-19!</p>
+            <p>Ee: Leasing woos ZEROLEOR », MarBer ace ( The me ollege ea Looks Pee. .</p>
+            <p>New York: Harpers; 1956s--&quot;~&quot; * ae TS ie we SOs g th</p>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+    <script>
+        // Theme management
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Load saved theme or detect system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme || (systemDark ? 'dark' : 'light');
+        
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const newTheme = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        // Font size controls
+        let currentFontSize = 18;
+        const fontSizeUp = document.getElementById('fontSizeUp');
+        const fontSizeDown = document.getElementById('fontSizeDown');
+        
+        fontSizeUp.addEventListener('click', () => {
+            if (currentFontSize < 24) {
+                currentFontSize += 2;
+                html.style.fontSize = currentFontSize + 'px';
+                localStorage.setItem('fontSize', currentFontSize);
+            }
+        });
+        
+        fontSizeDown.addEventListener('click', () => {
+            if (currentFontSize > 14) {
+                currentFontSize -= 2;
+                html.style.fontSize = currentFontSize + 'px';
+                localStorage.setItem('fontSize', currentFontSize);
+            }
+        });
+        
+        // Load saved font size
+        const savedFontSize = localStorage.getItem('fontSize');
+        if (savedFontSize) {
+            currentFontSize = parseInt(savedFontSize);
+            html.style.fontSize = currentFontSize + 'px';
+        }
+
+        // Focus mode
+        const focusToggle = document.getElementById('focusToggle');
+        focusToggle.addEventListener('click', () => {
+            document.body.classList.toggle('focus-mode');
+            const isFocus = document.body.classList.contains('focus-mode');
+            focusToggle.textContent = isFocus ? '👁‍🗨' : '👁';
+            localStorage.setItem('focusMode', isFocus);
+        });
+        
+        // Load saved focus mode
+        if (localStorage.getItem('focusMode') === 'true') {
+            document.body.classList.add('focus-mode');
+            focusToggle.textContent = '👁‍🗨';
+        }
+
+        // Progress bar
+        const progressBar = document.getElementById('progressBar');
+        
+        function updateProgressBar() {
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset;
+            const trackLength = docHeight - winHeight;
+            const pctScrolled = Math.floor(scrollTop / trackLength * 100);
+            progressBar.style.width = pctScrolled + '%';
+        }
+        
+        window.addEventListener('scroll', updateProgressBar);
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Table of contents
+        const tocToggle = document.getElementById('tocToggle');
+        const toc = document.getElementById('toc');
+        
+        tocToggle.addEventListener('click', () => {
+            toc.classList.toggle('visible');
+        });
+        
+        // Close TOC when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!toc.contains(e.target) && !tocToggle.contains(e.target)) {
+                toc.classList.remove('visible');
+            }
+        });
+
+        // Reading time calculation
+        function calculateReadingTime() {
+            const content = document.getElementById('content');
+            const text = content.textContent || content.innerText || '';
+            const wordsPerMinute = 200;
+            const words = text.trim().split(/\s+/).length;
+            const time = Math.ceil(words / wordsPerMinute);
+            document.getElementById('readingTime').textContent = `${time} min read`;
+        }
+
+        // Save reading position
+        function saveReadingPosition() {
+            const scrollPosition = window.pageYOffset;
+            localStorage.setItem('readingPosition', scrollPosition);
+        }
+        
+        function restoreReadingPosition() {
+            const savedPosition = localStorage.getItem('readingPosition');
+            if (savedPosition) {
+                window.scrollTo(0, parseInt(savedPosition));
+            }
+        }
+        
+        window.addEventListener('beforeunload', saveReadingPosition);
+        window.addEventListener('load', restoreReadingPosition);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'd':
+                        e.preventDefault();
+                        themeToggle.click();
+                        break;
+                    case '+':
+                    case '=':
+                        e.preventDefault();
+                        fontSizeUp.click();
+                        break;
+                    case '-':
+                        e.preventDefault();
+                        fontSizeDown.click();
+                        break;
+                    case 'f':
+                        e.preventDefault();
+                        focusToggle.click();
+                        break;
+                }
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            calculateReadingTime();
+        });
+    </script>
 </body>
 </html>
